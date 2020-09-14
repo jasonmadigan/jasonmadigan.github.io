@@ -1,0 +1,18 @@
+baseURL = "/"
+languageCode = "en-us"
+title = "Jason Madigan"
+theme = "m10c"
+
+[params]
+description = "He's just zis guy, ya know?"
+author = "Jason Madigan"
+avatar = "0.jpg"
+
+[[params.social]]
+  name = "github"
+  url = "https://github.com/jasonmadigan"
+
+[[menu.main]]
+  identifier = "about"
+  name = "About"
+  url = "/about/"
