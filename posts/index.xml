@@ -152,11 +152,11 @@ end up with a complete brick.&lt;/p></description></item><item><title>1.1.3 - IP
 iPhone updates. Taking the baseband out of lockdown requires a little
 minicom pockery until we see a patched lockdownd - I&amp;rsquo;ll look into
 patching it this weekend.&lt;/p></description></item><item><title>Lightweight, fast Rails stack - Thin &amp; nginx</title><link>/posts/2008-01-24-lightweight-fast-rails-stack-thin-and-nginx/</link><pubDate>Thu, 24 Jan 2008 21:00:00 +0000</pubDate><guid>/posts/2008-01-24-lightweight-fast-rails-stack-thin-and-nginx/</guid><description>&lt;p>Since purchasing a
-&lt;!-- raw HTML omitted -->slice
-of heaven&lt;!-- raw HTML omitted --> a few days ago, I&amp;rsquo;ve setup a very lightweight Rails stack
+&lt;a href="http://www.slicehost.com" title="http://www.slicehost.com">slice
+of heaven&lt;/a> a few days ago, I&amp;rsquo;ve setup a very lightweight Rails stack
 consisting of
-&lt;!-- raw HTML omitted -->Thin&lt;!-- raw HTML omitted -->
-&amp;amp; &lt;!-- raw HTML omitted -->nginx&lt;!-- raw HTML omitted --> for my
+&lt;a href="http://code.macournoyer.com/thin/" title="http://code.macournoyer.com/thin/">Thin&lt;/a>
+&amp;amp; &lt;a href="http://nginx.net/" title="http://nginx.net/">nginx&lt;/a> for my
 Rails needs. Since I went for a slice with just 256MB of RAM, memory
 consumption becomes a pretty serious issue. nginx has been around for
 quite a while now, and has recently started to become more and more
@@ -328,7 +328,7 @@ file)&lt;/li>
 &lt;li>Disable CommCenter - ssh to your phone, vim
 /System/Library/LaunchDaemons/com.apple.CommCenter.plist add:&lt;br>
 @&lt;br>
-&lt;!-- raw HTML omitted -->Disabled&lt;!-- raw HTML omitted -->&lt;!-- raw HTML omitted -->&lt;br>
+&lt;key>Disabled&lt;/key>&lt;true/>&lt;br>
 @&lt;/li>
 &lt;li>If you don&amp;rsquo;t like vim, you can do this modification on your desktop
 computer (iPhuc/iPhoneInterface getfile, modify the file, and
