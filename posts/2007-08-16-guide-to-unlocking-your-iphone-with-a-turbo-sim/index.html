@@ -1,0 +1,62 @@
+<!doctype html><html lang=en-us><head><title>Guide to unlocking your iPhone with a Turbo SIM // Jason Madigan</title>
+<link rel="shortcut icon" href=/favicon.ico><meta charset=utf-8><meta name=generator content="Hugo 0.140.2"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=author content="Jason Madigan"><meta name=description content><link rel=stylesheet href=/css/main.min.5b1fcc8902588589c4767187402a3c29f8b8d7a6fdef6d9f8f77045bb0d14fee.css><meta name=twitter:card content="summary"><meta name=twitter:title content="Guide to unlocking your iPhone with a Turbo SIM"><meta name=twitter:description content="Since receiving my Turbo SIM yesterday and successfully getting it to work with O2 Ireland, I thought I’d write up a clear, easy to understand guide outlining the process.
+Disclaimer: If you break something it’s your own stupid fault jerkface.
+What you will need An iPhone Your iPhone will need to be Jailbroken, have SSH installed and it will need to have been activated using AT&amp;T’s ICCID (use iASign). If you don’t know what any of this means, do some reading. There are a million zillion guides out there explaining the procedures for doing these things. If, after reading, you still don’t know what any of this means, this method is not for you. Wait for a software based unlock."><meta property="og:url" content="/posts/2007-08-16-guide-to-unlocking-your-iphone-with-a-turbo-sim/"><meta property="og:site_name" content="Jason Madigan"><meta property="og:title" content="Guide to unlocking your iPhone with a Turbo SIM"><meta property="og:description" content="Since receiving my Turbo SIM yesterday and successfully getting it to work with O2 Ireland, I thought I’d write up a clear, easy to understand guide outlining the process.
+Disclaimer: If you break something it’s your own stupid fault jerkface.
+What you will need An iPhone Your iPhone will need to be Jailbroken, have SSH installed and it will need to have been activated using AT&amp;T’s ICCID (use iASign). If you don’t know what any of this means, do some reading. There are a million zillion guides out there explaining the procedures for doing these things. If, after reading, you still don’t know what any of this means, this method is not for you. Wait for a software based unlock."><meta property="og:locale" content="en_us"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2007-08-16T21:00:00+00:00"><meta property="article:modified_time" content="2007-08-16T21:00:00+00:00"></head><body><header class=app-header><a href=/><img class=app-header-avatar src=/0.jpg alt="Jason Madigan"></a>
+<span class=app-header-title>Jason Madigan</span><nav class=app-header-menu><a class=app-header-menu-item href=/about/>About</a></nav><p>He's just zis guy, ya know?</p><div class=app-header-social><a href=https://github.com/jasonmadigan target=_blank rel="noreferrer noopener me"><svg viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-link"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+</a></div></header><main class=app-container><article class=post><header class=post-header><h1 class=post-title>Guide to unlocking your iPhone with a Turbo SIM</h1><div class=post-meta><div><svg class="icon icon-calendar" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><title>calendar</title><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+Aug 16, 2007</div><div><svg class="icon icon-clock" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><title>clock</title><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+4 min read</div></div></header><div class=post-content><p>Since receiving my Turbo SIM yesterday and successfully getting it to
+work with O2 Ireland, I thought I&rsquo;d write up a clear, easy to understand
+guide outlining the process.</p><p><em>Disclaimer: If you break something it&rsquo;s your own stupid fault
+jerkface.</em></p><h1 id=what-you-will-need>What you will need</h1><h2 id=an-iphone>An iPhone</h2><p>Your iPhone will need to be Jailbroken, have SSH installed and it will
+need to have been activated using AT&amp;T&rsquo;s ICCID (use iASign). If you
+don&rsquo;t know what any of this means, do some reading. There are a million
+zillion guides out there explaining the procedures for doing these
+things. If, after reading, you still don&rsquo;t know what any of this means,
+this method is not for you. Wait for a software based unlock.</p><h2 id=a-turbo-sim---available-herehttpwwwbladoxcomshopphplangen-sold-out-at-the-time-of-writing>A Turbo SIM - <a href="http://www.bladox.com/shop.php?lang=en">Available here</a> (sold out at the time of writing)</h2><p>As explained in previous blog posts, this little device is sandwiched
+between your carriers SIM and itself. It&rsquo;s capable of running small SIM
+level applications, one of which, Applesaft, is capable of unlocking the
+iPhone by exploiting a flaw in the iPhone&rsquo;s baseband. I&rsquo;m not going to
+explain how this works because anytime I do I get strange looks from
+people as though I&rsquo;d just asked them if they&rsquo;d ever been abducted by
+aliens. At the time of writing this, the poor small team at Bladox
+churning these little devices out have become inundated with orders and
+have had to temporarily close their online store.</p><h2 id=some-software>Some software</h2><p><a href=http://www.mediafire.com/?5c3gvjc44zz>applesaft-0.92.tar.gz</a> &
+<a href=http://www.mediafire.com/?eoxhg0ynb5y>turbo-cable-utils-iPhone-0.7.0-rev1.tar.gz</a></p><h2 id=steps>Steps:</h2><ul><li>Extract the contents of turbo-cable-utils-iPhone-0.7.0-rev1.tar.gz
+to somewhere on your computer</li><li>Upload the contents of /bin-iPhone from the file you just unpacked
+to /bin on your iPhone (through SCP or SSHFS, whichever you prefer)</li><li>SSH into your iPhone</li><li>Run <code>cd /bin/</code></li><li>Now you&rsquo;ll need to change the permissions for each of the binary
+applications which you just uploaded to <code>/bin/</code> using the command
+<code>chmod +x turbo-APPNAME</code>. There are 10 applications in total which
+you need to do this for.</li><li>Extract the contents of applesaft-0.92.tar.gz and copy the
+applesaft.trb file containted within to your <code>/bin/</code> folder on your
+iPhone the same as you uploaded the turbo cable utilities mentioned
+above. You can remove this and the <code>turbo-APPNAME</code> files later. Run
+<code>chmod 777 /bin/applesaft.trb</code> to give the file the permissions it
+needs.</li><li>Download and edit (or edit on the iPhone locally if you have
+something like VIM installed) the file <code>com.apple.CommCenter.plist</code>
+located in <code>/System/Library/LaunchDaemons/</code> on your iPhone.</li><li>Disable the commcenter by placing <code>&lt;key>Disabled&lt;/key>&lt;true/></code> after
+<code>&lt;key>OnDemand&lt;/key>&lt;false/></code> and copy the file back/save it.</li><li>Reboot the iPhone.</li><li>Now comes the tricky bit. Carefully <strong>CAREFULLY</strong> remove your Turbo
+SIM from its plastic casing. Seriously, Jesus Christ be careful. Oh
+god you&rsquo;re going to break it <strong>WHAT ARE YOU DOING</strong>.</li><li>Take your AT&amp;T SIM card out of your iPhone using a paperclip and
+carefully trim it according the the printed instructions on the
+Turbo SIM&rsquo;s packaging. Don&rsquo;t be afraid to trim it really tight
+around the SIM&rsquo;s contacts for a snug fit.</li><li>Carefully sandwich the trimmed AT&amp;T card with your Turbo SIM and
+place them both into the iPhone&rsquo;s SIM tray. You&rsquo;ll have to be gentle
+here as there&rsquo;s just barely enough clearance for both devices to fit
+snuggly into the SIM tray.</li><li>The carrier name area at the top left of the screen will continue to
+say &ldquo;No Service&rdquo;, this is fine. If it says &ldquo;No SIM&rdquo; the contacts
+between your SIM and the Turbo SIM aren&rsquo;t properly seated, fiddle
+with it a bit to make sure they&rsquo;re square atop of one another.</li><li>SSH into your iPhone again and run the following command to ensure
+the iPhone can communicate properly with the Turbo SIM -
+&ldquo;turbo-info&rdquo;. Assuming everything is correct, this command should
+return &ldquo;OK&rdquo; along with the serial of your Turbo SIM.</li><li>Now, lets install the applesaft application. Run the following:<br><code>turbo-app /bin/applesaft.trb</code><br>If all goes well you should receive an &ldquo;OK&rdquo; after some initial
+messages about the modem being initialised.</li><li>Alter the <code>com.apple.CommCenter.plist</code>file we edited above and
+remove the line we added <code>&lt;key>Disabled&lt;/key>&lt;true/></code> and reboot.</li><li>On your iPhone, go to Settings>Phone>SIM Applications>Apple Saft
+and press &ldquo;SET&rdquo;. A prompt should indicate that the IMSI and ICCID of
+the AT&amp;T SIM has been read and recorded successfully.</li><li>Now, remove the Turbo SIM and AT&amp;T SIM.</li><li>Trim your carriers SIM card just like the AT&amp;T one and insert the
+sandwiched pair into the iPhone.</li><li>Reboot the iPhone.</li><li>All going well, your iPhone should now properly register on your
+carriers network and everything should pretty much work straight
+away. To get EDGE/GPRS working, alter the settings in
+Settings>General>EDGE to use your carriers APN/Username/Password.</li><li>Pat yourself on the back.</li></ul></div><div class=post-footer></div></article></main></body></html>

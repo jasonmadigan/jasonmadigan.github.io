@@ -1,0 +1,418 @@
+<!doctype html><html lang=en-us><head><title>Unlocking the iPhone // Jason Madigan</title>
+<link rel="shortcut icon" href=/favicon.ico><meta charset=utf-8><meta name=generator content="Hugo 0.140.2"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=author content="Jason Madigan"><meta name=description content><link rel=stylesheet href=/css/main.min.5b1fcc8902588589c4767187402a3c29f8b8d7a6fdef6d9f8f77045bb0d14fee.css><meta name=twitter:card content="summary"><meta name=twitter:title content="Unlocking the iPhone"><meta name=twitter:description content="There are two available solutions for unlocking the iPhone at the moment, and both hinge upon a “flaw” in the iPhone’s baseband. All shipped iPhones are locked with a PN (personalized network) lock to at&amp;t. The iPhone, upon startup, enforces this PN lock by reading the included at&amp;t SIM card’s IMSI two times initially at startup to ensure the IMSI is that of at&amp;t. The third and subsequent reads of the IMSI during the normal operation of the iPhone is not checked to ensure it is that of at&amp;t."><meta property="og:url" content="/posts/2007-08-08-unlocking-the-iphone/"><meta property="og:site_name" content="Jason Madigan"><meta property="og:title" content="Unlocking the iPhone"><meta property="og:description" content="There are two available solutions for unlocking the iPhone at the moment, and both hinge upon a “flaw” in the iPhone’s baseband. All shipped iPhones are locked with a PN (personalized network) lock to at&amp;t. The iPhone, upon startup, enforces this PN lock by reading the included at&amp;t SIM card’s IMSI two times initially at startup to ensure the IMSI is that of at&amp;t. The third and subsequent reads of the IMSI during the normal operation of the iPhone is not checked to ensure it is that of at&amp;t."><meta property="og:locale" content="en_us"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2007-08-08T21:00:00+00:00"><meta property="article:modified_time" content="2007-08-08T21:00:00+00:00"></head><body><header class=app-header><a href=/><img class=app-header-avatar src=/0.jpg alt="Jason Madigan"></a>
+<span class=app-header-title>Jason Madigan</span><nav class=app-header-menu><a class=app-header-menu-item href=/about/>About</a></nav><p>He's just zis guy, ya know?</p><div class=app-header-social><a href=https://github.com/jasonmadigan target=_blank rel="noreferrer noopener me"><svg viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-link"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+</a></div></header><main class=app-container><article class=post><header class=post-header><h1 class=post-title>Unlocking the iPhone</h1><div class=post-meta><div><svg class="icon icon-calendar" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><title>calendar</title><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+Aug 8, 2007</div><div><svg class="icon icon-clock" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><title>clock</title><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+8 min read</div></div></header><div class=post-content><p>There are two available solutions for unlocking the iPhone at the
+moment, and both hinge upon a &ldquo;flaw&rdquo; in the iPhone&rsquo;s baseband. All
+shipped iPhones are locked with a PN (personalized network) lock to
+at&amp;t. The iPhone, upon startup, enforces this PN lock by reading the
+included at&amp;t SIM card&rsquo;s
+<a href=http://en.wikipedia.org/wiki/International_Mobile_Subscriber_Identity>IMSI</a>
+two times initially at startup to ensure the IMSI is that of at&amp;t. The
+third and subsequent reads of the IMSI during the normal operation of
+the iPhone is not checked to ensure it is that of at&amp;t.</p><p>The two available unlocking solutions both exploit this to use SIM cards
+from providers other than at&amp;t. The first method involves SIM card
+cloning, which is very much illegal in most countries. The method sees a
+the KI (the &ldquo;secret&rdquo; ciphering and authentication key embedded into the
+SIM) extracted from an old COMP128 V1 SIM card (these are rare to find
+distributed from 2002 onwards). The KI can only be extracted from these
+old SIM cards, and not the modern V2/V3 cards available today. The KI
+and IMSI from this old SIM card, along with the IMSI of the iPhone&rsquo;s
+at&amp;at card are combined and written to a blank SIM card (SilverCard)
+using a SIM card writer. Some additional programming is done to the
+blank card&rsquo;s SIM to return the at&amp;t IMSI the first two reads, and the V1
+cards IMSI for any subsequent requests. This method works, but is
+frought with all sorts of legality issues (not to mention the fact that
+finding old V1 SIM cards is pretty difficult anyway) and so is less than
+ideal.</p><p>A second unlocking solution is much more promising and is likely to
+attract a lot of attention over the next few weeks. It involves the use
+of a piece of hardware from <a href=http://www.bladox.com/>Bladox</a> called a
+Turbo SIM. This nifty thin little device sits between your original SIM
+card and the SIM reader in your iPhone. It&rsquo;s capable of running small
+SIM applications and can be used to intercept incoming IMSI requests (or
+any SIM requests for that matter), process them, and produce output. Use
+of such a device is probably completely legal, since the original SIM
+card is not cloned. It will also work perfectly with V2/V3 SIM cards.
+It&rsquo;s only purpose (in the case of unlocking the iPhone) is to get by the
+&ldquo;good guy, bad guy&rdquo; IMSI check the phone performs at boot to provide the
+iPhone with the at&amp;t IMSI it requires at startup. Thereafter, the device
+relinquishes control back to the original SIM card for any further SIM
+requests, including network registration. I&rsquo;ve ordered one and by the
+time it arrives in 2 or so weeks there should be a great deal of hype
+surrounding the device. Two applications designed to run on the device
+for the purpose of fooling the iPhone have already been released, here&rsquo;s
+the source of the first one:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c data-lang=c><span style=display:flex><span><span style=color:#75715e>/*
+</span></span></span><span style=display:flex><span><span style=color:#75715e> * iPhone baseband SIM lock 0wnage PoC
+</span></span></span><span style=display:flex><span><span style=color:#75715e> *
+</span></span></span><span style=display:flex><span><span style=color:#75715e> * History:
+</span></span></span><span style=display:flex><span><span style=color:#75715e> * 0.92 - User Interface, ICCID/IMSI are read from a card and
+</span></span></span><span style=display:flex><span><span style=color:#75715e>      then used with another
+</span></span></span><span style=display:flex><span><span style=color:#75715e> * 0.91 - some fixes, PROC_8_CONFIG_INIT_BOOSTER for speedy init of ICCID file,
+</span></span></span><span style=display:flex><span><span style=color:#75715e> *      needs bladox turbo kernel &gt;=1.2.7
+</span></span></span><span style=display:flex><span><span style=color:#75715e> * 0.9 - original version
+</span></span></span><span style=display:flex><span><span style=color:#75715e> *
+</span></span></span><span style=display:flex><span><span style=color:#75715e> * Compile, load on your leet Bladox gear
+</span></span></span><span style=display:flex><span><span style=color:#75715e> * disable your subscription PIN and enjoy :p
+</span></span></span><span style=display:flex><span><span style=color:#75715e> *
+</span></span></span><span style=display:flex><span><span style=color:#75715e> * Special thanks to the baseband development team
+</span></span></span><span style=display:flex><span><span style=color:#75715e> * It wouldn&#39;t have been so easy without you :)
+</span></span></span><span style=display:flex><span><span style=color:#75715e> *
+</span></span></span><span style=display:flex><span><span style=color:#75715e> * (c) 2007, collective iPhone development effort
+</span></span></span><span style=display:flex><span><span style=color:#75715e> *
+</span></span></span><span style=display:flex><span><span style=color:#75715e> * This program is free software; you can redistribute it and/or
+</span></span></span><span style=display:flex><span><span style=color:#75715e> * modify it under the terms of the GNU General Public License
+</span></span></span><span style=display:flex><span><span style=color:#75715e> * as published by the Free Software Foundation; either version 2
+</span></span></span><span style=display:flex><span><span style=color:#75715e> * of the License, or (at your option) any later version.
+</span></span></span><span style=display:flex><span><span style=color:#75715e> *
+</span></span></span><span style=display:flex><span><span style=color:#75715e> * This program is distributed in the hope that it will be useful,
+</span></span></span><span style=display:flex><span><span style=color:#75715e> * but WITHOUT ANY WARRANTY; without even the implied warranty of
+</span></span></span><span style=display:flex><span><span style=color:#75715e> * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+</span></span></span><span style=display:flex><span><span style=color:#75715e> * GNU General Public License for more details.
+</span></span></span><span style=display:flex><span><span style=color:#75715e> *
+</span></span></span><span style=display:flex><span><span style=color:#75715e> * You should have received a copy of the GNU General Public License
+</span></span></span><span style=display:flex><span><span style=color:#75715e> * along with this program; if not, write to the Free Software
+</span></span></span><span style=display:flex><span><span style=color:#75715e> * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+</span></span></span><span style=display:flex><span><span style=color:#75715e>*/</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;config.h&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;turbo/turbo.h&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;stdlib.h&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;string.h&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#define VERSION_A    0
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#define VERSION_B    92
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span><span style=color:#75715e>/* *INDENT-OFF* */</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>static</span> lc_char PROGMEM lc_Show[]<span style=color:#f92672>=</span>{
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>LC_EN</span>(<span style=color:#e6db74>&#34;Show&#34;</span>)
+</span></span><span style=display:flex><span>        LC_END
+</span></span><span style=display:flex><span>};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>static</span> lc_char PROGMEM lc_Set[]<span style=color:#f92672>=</span>{
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>LC_EN</span>(<span style=color:#e6db74>&#34;Set&#34;</span>)
+</span></span><span style=display:flex><span>        LC_END
+</span></span><span style=display:flex><span>};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>static</span> lc_char PROGMEM lc_WasSet[]<span style=color:#f92672>=</span>{
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>LC_EN</span>(<span style=color:#e6db74>&#34;Following was set: &#34;</span>)
+</span></span><span style=display:flex><span>        LC_END
+</span></span><span style=display:flex><span>};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>static</span> lc_char PROGMEM lc_Version[]<span style=color:#f92672>=</span>{
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>LC_EN</span>(<span style=color:#e6db74>&#34;Version&#34;</span>)
+</span></span><span style=display:flex><span>        LC_END
+</span></span><span style=display:flex><span>};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>static</span> lc_char PROGMEM lc_AppleSaft[]<span style=color:#f92672>=</span>{
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>LC_EN</span>(<span style=color:#e6db74>&#34;Apple Saft&#34;</span>)
+</span></span><span style=display:flex><span>        LC_END
+</span></span><span style=display:flex><span>};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>static</span> lc_char PROGMEM lc_IMSI[]<span style=color:#f92672>=</span>{
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>LC_EN</span>(<span style=color:#e6db74>&#34;IMSI: &#34;</span>)
+</span></span><span style=display:flex><span>        LC_END
+</span></span><span style=display:flex><span>};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>static</span> lc_char PROGMEM lc_ICCID[]<span style=color:#f92672>=</span>{
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>LC_EN</span>(<span style=color:#e6db74>&#34;ICCID: &#34;</span>)
+</span></span><span style=display:flex><span>        LC_END
+</span></span><span style=display:flex><span>};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>/* *INDENT-ON* */</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#define EF_IMSI 0x6F07
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#define EF_ICCID 0x2FE2
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span>u8 PROGMEM ef_imsi_path[] <span style=color:#f92672>=</span> { <span style=color:#ae81ff>0x3F</span>, <span style=color:#ae81ff>0x00</span>, <span style=color:#ae81ff>0x7F</span>, <span style=color:#ae81ff>0x20</span>, <span style=color:#ae81ff>0x6F</span>, <span style=color:#ae81ff>0x07</span> };
+</span></span><span style=display:flex><span>u8 PROGMEM ef_iccid_path[] <span style=color:#f92672>=</span> { <span style=color:#ae81ff>0x3F</span>, <span style=color:#ae81ff>0x00</span>, <span style=color:#ae81ff>0x2F</span>, <span style=color:#ae81ff>0xE2</span> };
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#define IMSI_SIZE 9
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#define IMSI_RESPONSE_SIZE 15
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span>u8 counter;
+</span></span><span style=display:flex><span>u8 <span style=color:#f92672>*</span>imsi;
+</span></span><span style=display:flex><span>u8 <span style=color:#f92672>*</span>imsi_response;
+</span></span><span style=display:flex><span>u8 file[<span style=color:#ae81ff>2</span>];
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>u8 <span style=color:#f92672>*</span>tmp_imsi;
+</span></span><span style=display:flex><span>u8 <span style=color:#f92672>*</span>tmp_iccid;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>typedef</span> <span style=color:#66d9ef>struct</span> _Pers_mem
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>  u8 on;
+</span></span><span style=display:flex><span>  u8 imsi[<span style=color:#ae81ff>0x09</span>];
+</span></span><span style=display:flex><span>  u8 iccid[<span style=color:#ae81ff>0x0a</span>];
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>Pers_mem;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>Pers_mem <span style=color:#f92672>*</span>pers_mem <span style=color:#f92672>=</span> NULL;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>void</span> <span style=color:#a6e22e>handle_sim_file</span> (File_apdu_data <span style=color:#f92672>*</span> fa)
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>  u8 i;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>if</span> (fa<span style=color:#f92672>-&gt;</span>ef <span style=color:#f92672>==</span> EF_ICCID <span style=color:#f92672>&amp;&amp;</span> fa<span style=color:#f92672>-&gt;</span>ins <span style=color:#f92672>==</span> ME_CMD_READ_BINARY)
+</span></span><span style=display:flex><span>  {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>rb</span> (<span style=color:#f92672>&amp;</span>pers_mem<span style=color:#f92672>-&gt;</span>on))
+</span></span><span style=display:flex><span>    {
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>dbsp</span> (<span style=color:#e6db74>&#34;FAKE_ICCID</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>);
+</span></span><span style=display:flex><span>      <span style=color:#75715e>//memcpy (fa-&gt;data, _att_iccid, sizeof (_att_iccid));
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>      <span style=color:#a6e22e>memcpy</span> (fa<span style=color:#f92672>-&gt;</span>data, <span style=color:#f92672>&amp;</span>pers_mem<span style=color:#f92672>-&gt;</span>iccid[<span style=color:#ae81ff>0</span>], <span style=color:#ae81ff>0x0a</span>);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>else</span>
+</span></span><span style=display:flex><span>    {
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>dbsp</span> (<span style=color:#e6db74>&#34;REAL_ICCID</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>);
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>sim</span> (fa<span style=color:#f92672>-&gt;</span>ins, fa<span style=color:#f92672>-&gt;</span>p1, fa<span style=color:#f92672>-&gt;</span>p2, fa<span style=color:#f92672>-&gt;</span>p3, fa<span style=color:#f92672>-&gt;</span>data);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    fa<span style=color:#f92672>-&gt;</span>data[fa<span style=color:#f92672>-&gt;</span>p3] <span style=color:#f92672>=</span> <span style=color:#ae81ff>0x90</span>;
+</span></span><span style=display:flex><span>    fa<span style=color:#f92672>-&gt;</span>data[fa<span style=color:#f92672>-&gt;</span>p3 <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>] <span style=color:#f92672>=</span> <span style=color:#ae81ff>0x00</span>;
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>else</span> <span style=color:#66d9ef>if</span> (fa<span style=color:#f92672>-&gt;</span>ef <span style=color:#f92672>==</span> EF_IMSI <span style=color:#f92672>&amp;&amp;</span> fa<span style=color:#f92672>-&gt;</span>ins <span style=color:#f92672>==</span> ME_CMD_READ_BINARY)
+</span></span><span style=display:flex><span>  {
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>sim</span> (fa<span style=color:#f92672>-&gt;</span>ins, fa<span style=color:#f92672>-&gt;</span>p1, fa<span style=color:#f92672>-&gt;</span>p2, fa<span style=color:#f92672>-&gt;</span>p3, fa<span style=color:#f92672>-&gt;</span>data);
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>switch</span> (counter)
+</span></span><span style=display:flex><span>    {
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>case</span> <span style=color:#ae81ff>0</span><span style=color:#f92672>:</span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>dbsp</span> (<span style=color:#e6db74>&#34;REAL_IMSI_0</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>);
+</span></span><span style=display:flex><span>    <span style=color:#75715e>/* learn and retransmit */</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>//        low_level_imsi_select ();
+</span></span></span><span style=display:flex><span><span style=color:#75715e>//        sim (0xB0, 0x00, 0x00, 0x09, imsi);   /* READ BINARY */
+</span></span></span><span style=display:flex><span><span style=color:#75715e>//        memcpy (fa-&gt;data, imsi, IMSI_SIZE);
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    fa<span style=color:#f92672>-&gt;</span>data[fa<span style=color:#f92672>-&gt;</span>p3] <span style=color:#f92672>=</span> <span style=color:#ae81ff>0x90</span>;
+</span></span><span style=display:flex><span>    fa<span style=color:#f92672>-&gt;</span>data[fa<span style=color:#f92672>-&gt;</span>p3 <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>] <span style=color:#f92672>=</span> <span style=color:#ae81ff>0x00</span>;
+</span></span><span style=display:flex><span>    counter<span style=color:#f92672>++</span>;
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>break</span>;
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>case</span> <span style=color:#ae81ff>1</span><span style=color:#f92672>:</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>/* spoof */</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>rb</span> (<span style=color:#f92672>&amp;</span>pers_mem<span style=color:#f92672>-&gt;</span>on))
+</span></span><span style=display:flex><span>    {
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>dbsp</span> (<span style=color:#e6db74>&#34;FAKE_IMSI_1</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>);
+</span></span><span style=display:flex><span><span style=color:#75715e>//        memcpy (fa-&gt;data, _att_imsi, sizeof (_att_imsi));
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>      <span style=color:#a6e22e>memcpy</span> (fa<span style=color:#f92672>-&gt;</span>data, <span style=color:#f92672>&amp;</span>pers_mem<span style=color:#f92672>-&gt;</span>imsi[<span style=color:#ae81ff>0</span>], <span style=color:#ae81ff>0x09</span>);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>else</span>
+</span></span><span style=display:flex><span>    {
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>dbsp</span> (<span style=color:#e6db74>&#34;REAL_IMSI_1</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>    fa<span style=color:#f92672>-&gt;</span>data[fa<span style=color:#f92672>-&gt;</span>p3] <span style=color:#f92672>=</span> <span style=color:#ae81ff>0x90</span>;
+</span></span><span style=display:flex><span>    fa<span style=color:#f92672>-&gt;</span>data[fa<span style=color:#f92672>-&gt;</span>p3 <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>] <span style=color:#f92672>=</span> <span style=color:#ae81ff>0x00</span>;
+</span></span><span style=display:flex><span>    counter<span style=color:#f92672>++</span>;
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>break</span>;
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>case</span> <span style=color:#ae81ff>2</span><span style=color:#f92672>:</span>
+</span></span><span style=display:flex><span>    counter<span style=color:#f92672>++</span>;
+</span></span><span style=display:flex><span>    <span style=color:#75715e>/* no break intended here */</span>
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>default</span><span style=color:#f92672>:</span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>dbsp</span> (<span style=color:#e6db74>&#34;REAL_IMSI_2+</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>);
+</span></span><span style=display:flex><span>    <span style=color:#75715e>/* play nice */</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>//        memcpy (fa-&gt;data, imsi, IMSI_SIZE);
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#a6e22e>sim</span> (fa<span style=color:#f92672>-&gt;</span>ins, fa<span style=color:#f92672>-&gt;</span>p1, fa<span style=color:#f92672>-&gt;</span>p2, fa<span style=color:#f92672>-&gt;</span>p3, fa<span style=color:#f92672>-&gt;</span>data);
+</span></span><span style=display:flex><span>    fa<span style=color:#f92672>-&gt;</span>data[fa<span style=color:#f92672>-&gt;</span>p3] <span style=color:#f92672>=</span> <span style=color:#ae81ff>0x90</span>;
+</span></span><span style=display:flex><span>    fa<span style=color:#f92672>-&gt;</span>data[fa<span style=color:#f92672>-&gt;</span>p3 <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>] <span style=color:#f92672>=</span> <span style=color:#ae81ff>0x00</span>;
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>else</span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>sim</span> (fa<span style=color:#f92672>-&gt;</span>ins, fa<span style=color:#f92672>-&gt;</span>p1, fa<span style=color:#f92672>-&gt;</span>p2, fa<span style=color:#f92672>-&gt;</span>p3, fa<span style=color:#f92672>-&gt;</span>data);
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>void</span> <span style=color:#a6e22e>get_files</span> ()
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>  u8 path[<span style=color:#ae81ff>6</span>];
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>memcpy</span> (path, ef_imsi_path, <span style=color:#ae81ff>6</span>);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>select</span> (path, <span style=color:#ae81ff>3</span>);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>sim</span> (ME_CMD_READ_BINARY, <span style=color:#ae81ff>0x00</span>, <span style=color:#ae81ff>0x00</span>, <span style=color:#ae81ff>0x09</span>, tmp_imsi);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>select</span> (<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>0</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>memcpy</span> (path, ef_iccid_path, <span style=color:#ae81ff>4</span>);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>select</span> (path, <span style=color:#ae81ff>2</span>);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>sim</span> (ME_CMD_READ_BINARY, <span style=color:#ae81ff>0x00</span>, <span style=color:#ae81ff>0x00</span>, <span style=color:#ae81ff>0x0a</span>, tmp_iccid);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>select</span> (<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>0</span>);
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>u8 <span style=color:#a6e22e>saft_set</span> (SCtx <span style=color:#f92672>*</span> ctx, u8 action)
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>if</span> (action <span style=color:#f92672>==</span> APP_ENTER)
+</span></span><span style=display:flex><span>  {
+</span></span><span style=display:flex><span>    u8 <span style=color:#f92672>*</span>buf <span style=color:#f92672>=</span> <span style=color:#a6e22e>buf_B</span> ();
+</span></span><span style=display:flex><span>    u8 <span style=color:#f92672>*</span>r <span style=color:#f92672>=</span> buf;
+</span></span><span style=display:flex><span>    u8 i;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>get_files</span> ();
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>memcpy</span> (<span style=color:#f92672>&amp;</span>pers_mem<span style=color:#f92672>-&gt;</span>imsi[<span style=color:#ae81ff>0</span>], tmp_imsi, <span style=color:#ae81ff>9</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>memcpy</span> (<span style=color:#f92672>&amp;</span>pers_mem<span style=color:#f92672>-&gt;</span>iccid[<span style=color:#ae81ff>0</span>], tmp_iccid, <span style=color:#ae81ff>0x0a</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>wb</span> (<span style=color:#f92672>&amp;</span>pers_mem<span style=color:#f92672>-&gt;</span>on, <span style=color:#ae81ff>1</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    r <span style=color:#f92672>=</span> <span style=color:#a6e22e>sprints</span> (r, <span style=color:#a6e22e>locale</span> (lc_WasSet));
+</span></span><span style=display:flex><span>    r <span style=color:#f92672>=</span> <span style=color:#a6e22e>sprintc</span> (r, <span style=color:#e6db74>&#39;\n&#39;</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    r <span style=color:#f92672>=</span> <span style=color:#a6e22e>sprints</span> (r, <span style=color:#a6e22e>locale</span> (lc_IMSI));
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span> (i <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>; i <span style=color:#f92672>&lt;</span> <span style=color:#ae81ff>0x09</span>; i<span style=color:#f92672>++</span>)
+</span></span><span style=display:flex><span>    {
+</span></span><span style=display:flex><span>      r <span style=color:#f92672>=</span> <span style=color:#a6e22e>sprintch</span> (r, <span style=color:#a6e22e>rb</span> (<span style=color:#f92672>&amp;</span>pers_mem<span style=color:#f92672>-&gt;</span>imsi[i]));
+</span></span><span style=display:flex><span>      r <span style=color:#f92672>=</span> <span style=color:#a6e22e>sprintc</span> (r, <span style=color:#e6db74>&#39; &#39;</span>);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    r <span style=color:#f92672>=</span> <span style=color:#a6e22e>sprints</span> (r, <span style=color:#a6e22e>locale</span> (lc_ICCID));
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span> (i <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>; i <span style=color:#f92672>&lt;</span> <span style=color:#ae81ff>0x0a</span>; i<span style=color:#f92672>++</span>)
+</span></span><span style=display:flex><span>    {
+</span></span><span style=display:flex><span>      r <span style=color:#f92672>=</span> <span style=color:#a6e22e>sprintch</span> (r, <span style=color:#a6e22e>rb</span> (<span style=color:#f92672>&amp;</span>pers_mem<span style=color:#f92672>-&gt;</span>iccid[i]));
+</span></span><span style=display:flex><span>      r <span style=color:#f92672>=</span> <span style=color:#a6e22e>sprintc</span> (r, <span style=color:#e6db74>&#39; &#39;</span>);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>    r <span style=color:#f92672>=</span> <span style=color:#a6e22e>sprintc</span> (r, <span style=color:#e6db74>&#39;\n&#39;</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    r <span style=color:#f92672>=</span> <span style=color:#a6e22e>sprintc</span> (r, <span style=color:#e6db74>&#39;\0&#39;</span>);
+</span></span><span style=display:flex><span>    i <span style=color:#f92672>=</span> <span style=color:#a6e22e>display_text</span> (buf, NULL);
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> (i <span style=color:#f92672>!=</span> APP_END)
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>return</span> APP_BACK;
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> i;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> APP_BACK;
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>return</span> APP_OK;
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>u8 <span style=color:#a6e22e>saft_show</span> (SCtx <span style=color:#f92672>*</span> ctx, u8 action)
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>if</span> (action <span style=color:#f92672>==</span> APP_ENTER)
+</span></span><span style=display:flex><span>  {
+</span></span><span style=display:flex><span>    u8 <span style=color:#f92672>*</span>buf <span style=color:#f92672>=</span> <span style=color:#a6e22e>buf_B</span> ();
+</span></span><span style=display:flex><span>    u8 <span style=color:#f92672>*</span>r <span style=color:#f92672>=</span> buf;
+</span></span><span style=display:flex><span>    u8 i;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>get_files</span> ();
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    r <span style=color:#f92672>=</span> <span style=color:#a6e22e>sprints</span> (r, <span style=color:#a6e22e>locale</span> (lc_IMSI));
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span> (i <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>; i <span style=color:#f92672>&lt;</span> <span style=color:#ae81ff>0x09</span>; i<span style=color:#f92672>++</span>)
+</span></span><span style=display:flex><span>    {
+</span></span><span style=display:flex><span>      r <span style=color:#f92672>=</span> <span style=color:#a6e22e>sprintch</span> (r, tmp_imsi[i]);
+</span></span><span style=display:flex><span>      r <span style=color:#f92672>=</span> <span style=color:#a6e22e>sprintc</span> (r, <span style=color:#e6db74>&#39; &#39;</span>);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    r <span style=color:#f92672>=</span> <span style=color:#a6e22e>sprints</span> (r, <span style=color:#a6e22e>locale</span> (lc_ICCID));
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span> (i <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>; i <span style=color:#f92672>&lt;</span> <span style=color:#ae81ff>0x0a</span>; i<span style=color:#f92672>++</span>)
+</span></span><span style=display:flex><span>    {
+</span></span><span style=display:flex><span>      r <span style=color:#f92672>=</span> <span style=color:#a6e22e>sprintch</span> (r, tmp_iccid[i]);
+</span></span><span style=display:flex><span>      r <span style=color:#f92672>=</span> <span style=color:#a6e22e>sprintc</span> (r, <span style=color:#e6db74>&#39; &#39;</span>);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>    r <span style=color:#f92672>=</span> <span style=color:#a6e22e>sprintc</span> (r, <span style=color:#e6db74>&#39;\n&#39;</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    r <span style=color:#f92672>=</span> <span style=color:#a6e22e>sprintc</span> (r, <span style=color:#e6db74>&#39;\0&#39;</span>);
+</span></span><span style=display:flex><span>    i <span style=color:#f92672>=</span> <span style=color:#a6e22e>display_text</span> (buf, NULL);
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> (i <span style=color:#f92672>!=</span> APP_END)
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>return</span> APP_BACK;
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> i;
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>return</span> APP_OK;
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>u8 <span style=color:#a6e22e>saft_version</span> (SCtx <span style=color:#f92672>*</span> ctx, u8 action)
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>if</span> (action <span style=color:#f92672>==</span> APP_ENTER)
+</span></span><span style=display:flex><span>  {
+</span></span><span style=display:flex><span>    u8 <span style=color:#f92672>*</span>buf <span style=color:#f92672>=</span> <span style=color:#a6e22e>buf_B</span> ();
+</span></span><span style=display:flex><span>    u8 <span style=color:#f92672>*</span>r <span style=color:#f92672>=</span> buf;
+</span></span><span style=display:flex><span>    u8 i;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    r <span style=color:#f92672>=</span> <span style=color:#a6e22e>sprints</span> (r, <span style=color:#a6e22e>locale</span> (lc_AppleSaft));
+</span></span><span style=display:flex><span>    r <span style=color:#f92672>=</span> <span style=color:#a6e22e>sprintc</span> (r, <span style=color:#e6db74>&#39; &#39;</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    r <span style=color:#f92672>=</span> <span style=color:#a6e22e>sprinti</span> (r, VERSION_A);
+</span></span><span style=display:flex><span>    r <span style=color:#f92672>=</span> <span style=color:#a6e22e>sprintc</span> (r, <span style=color:#e6db74>&#39;.&#39;</span>);
+</span></span><span style=display:flex><span>    r <span style=color:#f92672>=</span> <span style=color:#a6e22e>sprinti</span> (r, VERSION_B);
+</span></span><span style=display:flex><span>    r <span style=color:#f92672>=</span> <span style=color:#a6e22e>sprintc</span> (r, <span style=color:#e6db74>&#39;\n&#39;</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    r <span style=color:#f92672>=</span> <span style=color:#a6e22e>sprintc</span> (r, <span style=color:#e6db74>&#39;\0&#39;</span>);
+</span></span><span style=display:flex><span>    i <span style=color:#f92672>=</span> <span style=color:#a6e22e>display_text</span> (buf, NULL);
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> (i <span style=color:#f92672>!=</span> APP_END)
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>return</span> APP_BACK;
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> i;
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>return</span> APP_OK;
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>SNodeP saft_n <span style=color:#f92672>=</span> { lc_AppleSaft, NULL };
+</span></span><span style=display:flex><span>SNodeP saft_set_n <span style=color:#f92672>=</span> { lc_Set, saft_set };
+</span></span><span style=display:flex><span>SNodeP saft_show_n <span style=color:#f92672>=</span> { lc_Show, saft_show };
+</span></span><span style=display:flex><span>SNodeP saft_version_n <span style=color:#f92672>=</span> { lc_Version, saft_version };
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>/* *INDENT-OFF* */</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>SEdgeP saft_edges_p[] <span style=color:#f92672>=</span> {
+</span></span><span style=display:flex><span>  {<span style=color:#f92672>&amp;</span>saft_n, <span style=color:#f92672>&amp;</span>saft_show_n},
+</span></span><span style=display:flex><span>  {<span style=color:#f92672>&amp;</span>saft_n, <span style=color:#f92672>&amp;</span>saft_set_n},
+</span></span><span style=display:flex><span>  {<span style=color:#f92672>&amp;</span>saft_n, <span style=color:#f92672>&amp;</span>saft_version_n},
+</span></span><span style=display:flex><span>  NULL
+</span></span><span style=display:flex><span>};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>/* *INDENT-ON* */</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>void</span> <span style=color:#a6e22e>action_menu</span> (Menu_selection_data <span style=color:#f92672>*</span> x)
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>  SCtx <span style=color:#f92672>*</span>c;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  c <span style=color:#f92672>=</span> <span style=color:#a6e22e>spider_init</span> ();
+</span></span><span style=display:flex><span>  c<span style=color:#f92672>-&gt;</span>eP <span style=color:#f92672>=</span> <span style=color:#f92672>&amp;</span>saft_edges_p;
+</span></span><span style=display:flex><span>  c<span style=color:#f92672>-&gt;</span>n <span style=color:#f92672>=</span> <span style=color:#f92672>&amp;</span>saft_n;
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>spider</span> (c);
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>void</span> <span style=color:#a6e22e>turbo_handler</span> (u8 action, <span style=color:#66d9ef>void</span> <span style=color:#f92672>*</span>data)
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>switch</span> (action)
+</span></span><span style=display:flex><span>  {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>case</span> ACTION_APP_REGISTER:
+</span></span><span style=display:flex><span>      {
+</span></span><span style=display:flex><span>    Pers_mem <span style=color:#f92672>*</span>p <span style=color:#f92672>=</span> <span style=color:#a6e22e>emalloc</span> (<span style=color:#66d9ef>sizeof</span> (Pers_mem));
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    pers_mem <span style=color:#f92672>=</span> p;
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>wb</span> (<span style=color:#f92672>&amp;</span>p<span style=color:#f92672>-&gt;</span>on, <span style=color:#ae81ff>0</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>reg_app_data</span> (p);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>set_proc_8</span> (PROC_8_CONFIG_INIT_BOOSTER, <span style=color:#ae81ff>1</span>);
+</span></span><span style=display:flex><span>      }
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>break</span>;
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>case</span> ACTION_APP_UNREGISTER:
+</span></span><span style=display:flex><span>      {
+</span></span><span style=display:flex><span>    Pers_mem <span style=color:#f92672>*</span>p <span style=color:#f92672>=</span> <span style=color:#a6e22e>app_data</span> ();
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>efree</span> (p);
+</span></span><span style=display:flex><span>      }
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>break</span>;
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>case</span> ACTION_APP_INIT:
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>dbsp</span> (<span style=color:#e6db74>&#34;APP_INIT</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>);
+</span></span><span style=display:flex><span>      counter <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>      pers_mem <span style=color:#f92672>=</span> <span style=color:#a6e22e>app_data</span> ();
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>      tmp_imsi <span style=color:#f92672>=</span> <span style=color:#a6e22e>malloc</span> (<span style=color:#ae81ff>0x09</span>);
+</span></span><span style=display:flex><span>      tmp_iccid <span style=color:#f92672>=</span> <span style=color:#a6e22e>malloc</span> (<span style=color:#ae81ff>0x0a</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>      imsi <span style=color:#f92672>=</span> <span style=color:#a6e22e>malloc</span> (IMSI_SIZE);
+</span></span><span style=display:flex><span>      imsi_response <span style=color:#f92672>=</span> <span style=color:#a6e22e>malloc</span> (IMSI_RESPONSE_SIZE);
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>reg_file</span> (ef_imsi_path, <span style=color:#ae81ff>3</span>);
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>reg_file</span> (ef_iccid_path, <span style=color:#ae81ff>2</span>);
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>break</span>;
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>case</span> ACTION_FILE_APDU:
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>handle_sim_file</span> (data);
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>break</span>;
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>case</span> ACTION_INSERT_MENU:
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>insert_menu</span> (<span style=color:#a6e22e>locale</span> (lc_AppleSaft));
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>break</span>;
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>case</span> ACTION_MENU_SELECTION:
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>stk_thread</span> (action_menu, NULL);
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>break</span>;
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>default</span><span style=color:#f92672>:</span>
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>break</span>;
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>As you can see, it&rsquo;s pretty simple. Over the coming days we&rsquo;ll probably
+see a native iPhone application for writing applications such as the one
+above to the Turbo SIM. An updated application provided by the kind
+folks from Bladox is up at their forums
+<a href="http://www.bladox.com/forum/viewtopic.php?t=542&amp;postdays=0&amp;postorder=asc&amp;start=15">here</a>.
+Happy hacking.</p></div><div class=post-footer></div></article></main></body></html>

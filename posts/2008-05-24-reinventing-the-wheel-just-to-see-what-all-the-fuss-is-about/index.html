@@ -1,0 +1,85 @@
+<!doctype html><html lang=en-us><head><title>Reinventing the wheel, just to see what all the fuss is about. // Jason Madigan</title>
+<link rel="shortcut icon" href=/favicon.ico><meta charset=utf-8><meta name=generator content="Hugo 0.140.2"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=author content="Jason Madigan"><meta name=description content><link rel=stylesheet href=/css/main.min.5b1fcc8902588589c4767187402a3c29f8b8d7a6fdef6d9f8f77045bb0d14fee.css><meta name=twitter:card content="summary"><meta name=twitter:title content="Reinventing the wheel, just to see what all the fuss is about."><meta name=twitter:description content="I’ve been amassing a small army of broken arduinos over the past two months, but now I have something to show for it - the bones of a working (but altogether bulky) GPS tracker. The code I used seems kind of nasty to me, mostly because the bit-banging used for serial communication to try to ensure no data is missed in transition. The Arduino IDE is okay I guess (for a Java app), but if you like Ruby you may want to check out RAD. Looks like RAD only works with version 10 of the arduino SDK right now though."><meta property="og:url" content="/posts/2008-05-24-reinventing-the-wheel-just-to-see-what-all-the-fuss-is-about/"><meta property="og:site_name" content="Jason Madigan"><meta property="og:title" content="Reinventing the wheel, just to see what all the fuss is about."><meta property="og:description" content="I’ve been amassing a small army of broken arduinos over the past two months, but now I have something to show for it - the bones of a working (but altogether bulky) GPS tracker. The code I used seems kind of nasty to me, mostly because the bit-banging used for serial communication to try to ensure no data is missed in transition. The Arduino IDE is okay I guess (for a Java app), but if you like Ruby you may want to check out RAD. Looks like RAD only works with version 10 of the arduino SDK right now though."><meta property="og:locale" content="en_us"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2008-05-24T21:00:00+00:00"><meta property="article:modified_time" content="2008-05-24T21:00:00+00:00"></head><body><header class=app-header><a href=/><img class=app-header-avatar src=/0.jpg alt="Jason Madigan"></a>
+<span class=app-header-title>Jason Madigan</span><nav class=app-header-menu><a class=app-header-menu-item href=/about/>About</a></nav><p>He's just zis guy, ya know?</p><div class=app-header-social><a href=https://github.com/jasonmadigan target=_blank rel="noreferrer noopener me"><svg viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-link"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+</a></div></header><main class=app-container><article class=post><header class=post-header><h1 class=post-title>Reinventing the wheel, just to see what all the fuss is about.</h1><div class=post-meta><div><svg class="icon icon-calendar" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><title>calendar</title><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+May 24, 2008</div><div><svg class="icon icon-clock" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><title>clock</title><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+2 min read</div></div></header><div class=post-content><p>I&rsquo;ve been amassing a small army of broken arduinos over the past two
+months, but now I have <strong>something</strong> to show for it - the bones of a
+working (but altogether bulky) GPS tracker. The code I used seems kind
+of nasty to me, mostly because the bit-banging used for serial
+communication to try to ensure no data is missed in transition. The
+Arduino IDE is okay I guess (for a Java app), but if you like Ruby you
+may want to check out <a href=http://rad.rubyforge.org/>RAD</a>. Looks like RAD
+only works with version 10 of the arduino SDK right now though.</p><p>In terms of kit hooked up, we&rsquo;ve got an <a href="http://www.sparkfun.com/commerce/product_info.php?products_id=465">EM-406A (GPS
+Module)</a>
+& an <a href=http://www.arduino.cc/>Arduino Mini</a> along with a USB to serial
+header. I need to buy a EEPROM for storage, or possibly some kind of
+microSD reader. Borrowing some code from
+<a href=http://www.railsonwave.com/railsonwave/2007/7/4/gps-and-google-map-in>here</a>
+we can parse NMEA to take a look at where you are with Google Maps.</p><pre tabindex=0><code>#define bit4800Delay 200 //1 bit per 0.2 ms
+#define halfBit4800Delay 100
+
+byte rx = 8; //Connect to EM-406A&#39;s TX
+byte tx = 9; //Connect to EM-406A&#39;s RX
+char dataformat[7] = &#34;$GPGGA&#34;; //GGA
+char messageline[80] = &#34;&#34;;
+int i = 0;
+char latitude[10];
+char longitude[11];
+
+void setup() {
+ pinMode(rx,INPUT);
+ pinMode(tx,OUTPUT);
+ digitalWrite(tx,HIGH); // Needs to be pulled high before the EM-406A
+will return data
+ digitalWrite(13,HIGH); // Debugging LED
+ Serial.begin(9600); // Echo EM-406A output through serial
+}
+
+char SWread()
+{
+ byte val = 0;
+ //Wait for start bit (0)
+ while(digitalRead(rx)  HIGH); 
+
+  if (digitalRead(rx)  LOW) {
+ delayMicroseconds(halfBit4800Delay);
+
+for (int offset = 0; offset &lt; 8; offset**) {
+ delayMicroseconds;
+ val |= digitalRead &lt;&lt; offset;
+ }
+
+ delayMicroseconds;
+
+ // Bitbanging
+ if
+ return val-128;
+ else
+ return val;
+ }
+}
+
+void char2string {
+ i = 0;
+ messageline[0] = SWread;
+ if {
+ i**;
+ messageline[i] = SWread();
+
+while(messageline[i] != 13 &amp; i&lt;80) {
+ i++;
+ messageline[i] = SWread();
+ }
+
+messageline[i+1] = &#39;0&#39;;
+ }
+}
+
+void loop() {
+ char2string();
+ if (strncmp(messageline, dataformat, 6) == 0 &amp; i&gt;4) {
+   Serial.println(messageline);
+ }
+}
+</code></pre></div><div class=post-footer></div></article></main></body></html>
