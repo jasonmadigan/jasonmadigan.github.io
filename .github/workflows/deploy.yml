@@ -1,17 +1,11 @@
-name: Deploy to GitHub Pages
-
-on:
-  push:
-    branches:
-      - main
-
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
+      with:
+        submodules: true  # Ensure submodules are checked out
 
     - name: Setup Hugo
       uses: peaceiris/actions-hugo@v2
@@ -21,9 +15,11 @@ jobs:
     - name: Build site
       run: hugo --minify
 
+    - name: Debug build output
+      run: ls -R public  # Check if `public` is populated correctly
+
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./public
-
