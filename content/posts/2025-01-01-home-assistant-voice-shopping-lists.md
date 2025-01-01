@@ -1,6 +1,6 @@
 ---
 title: "Adding shopping list items via Home Assistant voice commands"
-date: 2025-01-01T12:00:00
+date: 2025-01-01T12:01:00
 categories: scripting
 ---
 
