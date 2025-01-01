@@ -11,10 +11,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
+    - name: Checkout code
       uses: actions/checkout@v3
       with:
-        submodules: true
+        submodules: recursive
+
 
     - name: Setup Hugo
       uses: peaceiris/actions-hugo@v2
