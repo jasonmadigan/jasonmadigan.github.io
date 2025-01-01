@@ -16,3 +16,6 @@ avatar = "0.jpg"
   identifier = "about"
   name = "About"
   url = "/about/"
+
+[markup.goldmark.renderer]
+  unsafe = true
