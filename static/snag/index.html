@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Snag — The Mac Download Manager That Won't Let Go</title>
+<meta name="description" content="Snag is a fast, native macOS download manager with multi-threaded downloads, automatic retry, and resume. No bloat, no torrents.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --teal: #5ac8be;
+  --teal-bright: #6edfd5;
+  --teal-dark: #3a9e96;
+  --teal-glow: rgba(90, 200, 190, 0.3);
+  --dark-1: #111114;
+  --dark-2: #1a1a1e;
+  --dark-3: #222228;
+  --dark-4: #2c2c34;
+  --warm: #f5f0e8;
+  --warm-dim: #c8c0b4;
+  --cream: #faf6ef;
+  --orange: #e8834a;
+  --serif: 'Playfair Display', Georgia, serif;
+  --sans: 'Source Sans 3', -apple-system, sans-serif;
+  --mono: 'JetBrains Mono', monospace;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--sans);
+  background: var(--dark-1);
+  color: var(--warm);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* noise texture overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 256px;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ═══ HERO ═══ */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 60px 24px 80px;
+  position: relative;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 40%, rgba(90, 200, 190, 0.08) 0%, transparent 70%),
+    linear-gradient(180deg, var(--dark-2) 0%, var(--dark-1) 100%);
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 200px;
+  background: linear-gradient(to bottom, transparent, var(--dark-1));
+  pointer-events: none;
+}
+
+/* app icon */
+.hero-icon {
+  width: 160px;
+  height: 160px;
+  border-radius: 32px;
+  background: linear-gradient(145deg, #24242a, #1a1a1e);
+  box-shadow:
+    0 2px 0 rgba(255,255,255,0.06) inset,
+    0 -2px 4px rgba(0,0,0,0.3) inset,
+    0 20px 60px rgba(0,0,0,0.5),
+    0 0 80px var(--teal-glow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 40px;
+  position: relative;
+  animation: iconFloat 4s ease-in-out infinite;
+}
+
+@keyframes iconFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.hero-icon svg {
+  width: 90px;
+  height: 90px;
+}
+
+.hero h1 {
+  font-family: var(--serif);
+  font-size: clamp(56px, 8vw, 96px);
+  font-weight: 900;
+  letter-spacing: -2px;
+  line-height: 1;
+  margin-bottom: 20px;
+  background: linear-gradient(180deg, #fff 20%, var(--warm-dim) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: none;
+}
+
+.hero-tagline {
+  font-size: clamp(20px, 3vw, 28px);
+  font-weight: 400;
+  color: var(--warm-dim);
+  max-width: 560px;
+  margin: 0 auto 12px;
+  line-height: 1.4;
+}
+
+.hero-tagline em {
+  color: var(--teal);
+  font-style: normal;
+  font-weight: 600;
+}
+
+.hero-sub {
+  font-size: 15px;
+  color: rgba(200, 192, 180, 0.5);
+  margin-bottom: 40px;
+}
+
+/* glossy CTA button */
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 36px;
+  font-family: var(--sans);
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  position: relative;
+  background: linear-gradient(180deg, var(--teal-bright) 0%, var(--teal-dark) 100%);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.25) inset,
+    0 -1px 2px rgba(0,0,0,0.2) inset,
+    0 4px 12px rgba(58, 158, 150, 0.4),
+    0 12px 40px rgba(90, 200, 190, 0.15);
+  transition: all 0.2s ease;
+}
+
+.cta-button::before {
+  content: '';
+  position: absolute;
+  inset: 1px 1px 50% 1px;
+  border-radius: 11px 11px 50% 50%;
+  background: linear-gradient(180deg, rgba(255,255,255,0.25), transparent);
+  pointer-events: none;
+}
+
+.cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.25) inset,
+    0 -1px 2px rgba(0,0,0,0.2) inset,
+    0 6px 20px rgba(58, 158, 150, 0.5),
+    0 16px 50px rgba(90, 200, 190, 0.2);
+}
+
+.cta-button:active {
+  transform: translateY(0);
+  background: linear-gradient(180deg, var(--teal-dark) 0%, var(--teal-dark) 100%);
+}
+
+.cta-button svg {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+}
+
+.cta-price {
+  display: block;
+  margin-top: 16px;
+  font-size: 14px;
+  color: rgba(200, 192, 180, 0.4);
+}
+
+/* ═══ WHAT IS SNAG ═══ */
+.what-section {
+  padding: 100px 24px 120px;
+  background:
+    linear-gradient(180deg, var(--dark-1) 0%, var(--dark-3) 50%, var(--dark-1) 100%);
+  position: relative;
+}
+
+.section-inner {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.section-label {
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--teal);
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.section-title {
+  font-family: var(--serif);
+  font-size: clamp(36px, 5vw, 52px);
+  font-weight: 700;
+  text-align: center;
+  line-height: 1.2;
+  margin-bottom: 24px;
+  color: var(--cream);
+}
+
+.section-desc {
+  font-size: 19px;
+  line-height: 1.7;
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 60px;
+  color: var(--warm-dim);
+}
+
+/* macOS window mockup */
+.window-mockup {
+  max-width: 780px;
+  margin: 0 auto;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow:
+    0 4px 8px rgba(0,0,0,0.3),
+    0 20px 60px rgba(0,0,0,0.5),
+    0 0 0 1px rgba(255,255,255,0.06);
+  transform: perspective(1200px) rotateX(2deg);
+  transition: transform 0.4s ease;
+}
+
+.window-mockup:hover {
+  transform: perspective(1200px) rotateX(0deg) scale(1.01);
+}
+
+/* single title bar + toolbar row like the real macOS app */
+.window-chrome {
+  height: 48px;
+  background: linear-gradient(180deg, #333338, #2a2a30);
+  display: flex;
+  align-items: center;
+  padding: 0 14px;
+  border-bottom: 1px solid rgba(0,0,0,0.4);
+  font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+}
+
+.window-dots {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.window-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.3) inset;
+}
+
+.window-dot.red { background: linear-gradient(180deg, #ff6058, #e0443e); }
+.window-dot.yellow { background: linear-gradient(180deg, #ffbd2e, #dea123); }
+.window-dot.green { background: linear-gradient(180deg, #27c93f, #1aab29); }
+
+.window-title-left {
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.65);
+  margin-left: 12px;
+  flex-shrink: 0;
+}
+
+.window-tb-group {
+  display: flex;
+  margin-left: auto;
+  background: rgba(255,255,255,0.06);
+  border-radius: 7px;
+  padding: 2px;
+  gap: 1px;
+  border: 1px solid rgba(255,255,255,0.04);
+}
+
+.window-tb-btn {
+  color: rgba(255,255,255,0.45);
+  width: 30px;
+  height: 26px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.window-tb-btn.teal { color: var(--teal); }
+
+.window-search {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-left: 10px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 7px;
+  padding: 5px 10px;
+  color: rgba(255,255,255,0.25);
+  font-size: 12px;
+  min-width: 130px;
+}
+
+.mock-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 12px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), transparent);
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+
+.mock-toolbar-buttons {
+  display: flex;
+  gap: 2px;
+  background: rgba(255,255,255,0.04);
+  border-radius: 6px;
+  padding: 2px;
+}
+
+.mock-tb-btn {
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.45);
+  width: 30px;
+  height: 26px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: default;
+}
+
+.mock-tb-btn.primary { color: var(--teal); }
+
+.mock-search {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 6px;
+  padding: 4px 10px;
+  color: rgba(255,255,255,0.25);
+  font-size: 12px;
+  min-width: 140px;
+}
+
+.window-body {
+  background: var(--dark-2);
+  padding: 0;
+  min-height: 340px;
+  font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+}
+
+/* simulated download list */
+.mock-downloads {
+  list-style: none;
+}
+
+.mock-dl {
+  display: flex;
+  align-items: flex-start;
+  padding: 8px 16px;
+  gap: 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+
+.mock-dl:nth-child(even) {
+  background: rgba(255,255,255,0.02);
+}
+
+.mock-dl-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 14px;
+  margin-top: 2px;
+}
+
+.mock-dl-icon.active { background: rgba(90, 200, 190, 0.15); }
+.mock-dl-icon.done { background: rgba(39, 201, 63, 0.15); }
+.mock-dl-icon.queued { background: rgba(200,192,180,0.08); }
+
+.mock-dl-info { flex: 1; min-width: 0; }
+
+.mock-dl-namerow {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.mock-dl-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--warm);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mock-dl-size {
+  font-size: 12px;
+  color: var(--warm-dim);
+  font-variant-numeric: tabular-nums;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+.mock-dl-status {
+  font-size: 11px;
+  color: var(--warm-dim);
+  margin-top: 3px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.mock-progress {
+  width: 100%;
+  height: 4px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-top: 4px;
+}
+
+.mock-progress-fill {
+  height: 100%;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--teal-dark), var(--teal));
+}
+
+.mock-progress-fill.done {
+  background: #27c93f;
+  width: 100%;
+}
+
+.mock-statusbar {
+  padding: 5px 16px;
+  font-size: 11px;
+  color: rgba(200,192,180,0.4);
+  background: rgba(0,0,0,0.15);
+  display: flex;
+  gap: 12px;
+  font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+}
+
+/* ═══ FEATURES ═══ */
+.features-section {
+  padding: 100px 24px 120px;
+  background:
+    radial-gradient(ellipse 100% 50% at 50% 0%, rgba(90, 200, 190, 0.04) 0%, transparent 60%),
+    var(--dark-1);
+}
+
+.features-grid {
+  max-width: 960px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+/* skeuomorphic feature card */
+.feature-card {
+  background: linear-gradient(160deg, var(--dark-3), var(--dark-2));
+  border-radius: 16px;
+  padding: 32px 28px;
+  position: relative;
+  border: 1px solid rgba(255,255,255,0.05);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.04) inset,
+    0 -1px 0 rgba(0,0,0,0.3) inset,
+    0 8px 32px rgba(0,0,0,0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.04) inset,
+    0 -1px 0 rgba(0,0,0,0.3) inset,
+    0 12px 48px rgba(0,0,0,0.4),
+    0 0 40px var(--teal-glow);
+}
+
+.feature-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: linear-gradient(145deg, var(--dark-4), var(--dark-2));
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.06) inset,
+    0 2px 8px rgba(0,0,0,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: var(--teal);
+}
+
+.feature-card h3 {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--cream);
+  margin-bottom: 10px;
+}
+
+.feature-card p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--warm-dim);
+}
+
+/* ═══ SPEED SECTION ═══ */
+.speed-section {
+  padding: 100px 24px 120px;
+  background:
+    linear-gradient(180deg, var(--dark-1) 0%, var(--dark-3) 50%, var(--dark-1) 100%);
+}
+
+.speed-inner {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.speed-visual {
+  background: linear-gradient(160deg, var(--dark-3), var(--dark-2));
+  border-radius: 16px;
+  padding: 40px;
+  border: 1px solid rgba(255,255,255,0.05);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.04) inset,
+    0 20px 60px rgba(0,0,0,0.4);
+  margin-top: 48px;
+}
+
+.speed-comparison {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+.speed-col h4 {
+  font-family: var(--mono);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--warm-dim);
+  margin-bottom: 16px;
+}
+
+.speed-bar-wrap {
+  margin-bottom: 12px;
+}
+
+.speed-bar-label {
+  font-size: 12px;
+  color: rgba(200,192,180,0.5);
+  margin-bottom: 4px;
+  font-family: var(--mono);
+}
+
+.speed-bar {
+  height: 24px;
+  border-radius: 6px;
+  background: rgba(255,255,255,0.04);
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2) inset;
+}
+
+.speed-bar-fill {
+  height: 100%;
+  border-radius: 6px;
+  position: relative;
+  transition: width 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.speed-bar-fill.single {
+  background: linear-gradient(90deg, #555, #666);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.1) inset;
+}
+
+.speed-bar-fill.multi {
+  background: linear-gradient(90deg, var(--teal-dark), var(--teal), var(--teal-bright));
+  box-shadow: 0 1px 0 rgba(255,255,255,0.2) inset;
+}
+
+/* chunk stripes on multi bar */
+.speed-bar-fill.multi::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 24%,
+    rgba(0,0,0,0.15) 24%,
+    rgba(0,0,0,0.15) 25%
+  );
+}
+
+.speed-time {
+  font-family: var(--mono);
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 4px;
+  color: var(--warm-dim);
+}
+
+.speed-time span {
+  color: var(--teal);
+  font-weight: 700;
+}
+
+/* ═══ BOTTOM CTA ═══ */
+.bottom-cta {
+  padding: 120px 24px;
+  text-align: center;
+  background:
+    radial-gradient(ellipse 60% 40% at 50% 60%, rgba(90, 200, 190, 0.06) 0%, transparent 70%),
+    var(--dark-1);
+}
+
+.bottom-cta .section-title {
+  margin-bottom: 12px;
+}
+
+.bottom-price {
+  font-family: var(--serif);
+  font-size: 48px;
+  font-weight: 900;
+  color: var(--teal);
+  margin-bottom: 8px;
+}
+
+.bottom-price-note {
+  font-size: 16px;
+  color: var(--warm-dim);
+  margin-bottom: 40px;
+}
+
+.bottom-requirements {
+  margin-top: 20px;
+  font-size: 13px;
+  color: rgba(200,192,180,0.35);
+}
+
+/* ═══ FOOTER ═══ */
+footer {
+  padding: 40px 24px;
+  text-align: center;
+  border-top: 1px solid rgba(255,255,255,0.04);
+  background: var(--dark-1);
+}
+
+footer p {
+  font-size: 13px;
+  color: rgba(200,192,180,0.3);
+}
+
+footer a {
+  color: var(--teal-dark);
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: var(--teal);
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-bottom: 16px;
+}
+
+/* ═══ ANIMATIONS ═══ */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+.reveal-delay-5 { transition-delay: 0.5s; }
+
+/* animated download bar in hero */
+@keyframes downloadPulse {
+  0% { width: 0%; }
+  70% { width: 100%; }
+  100% { width: 100%; opacity: 0.5; }
+}
+
+.hero-download-bar {
+  width: 200px;
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(255,255,255,0.06);
+  margin: 30px auto 0;
+  overflow: hidden;
+}
+
+.hero-download-bar span {
+  display: block;
+  height: 100%;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--teal-dark), var(--teal));
+  animation: downloadPulse 3s ease-in-out infinite;
+}
+
+/* ═══ RESPONSIVE ═══ */
+@media (max-width: 640px) {
+  .speed-comparison {
+    grid-template-columns: 1fr;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-icon {
+    width: 120px;
+    height: 120px;
+    border-radius: 24px;
+  }
+
+  .hero-icon svg {
+    width: 65px;
+    height: 65px;
+  }
+
+  .window-mockup {
+    transform: none;
+  }
+
+  .speed-visual {
+    padding: 24px;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero-icon reveal">
+    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <defs><linearGradient id="ico-g" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8aeee4"/><stop offset="100%" stop-color="#3a9e96"/></linearGradient></defs>
+      <rect width="200" height="200" rx="44" fill="#1c1c24"/>
+      <g transform="rotate(-14 100 130)" opacity="0.15"><rect x="90" y="44" width="20" height="12" rx="3" fill="#5ac8be"/><rect x="90" y="60" width="20" height="12" rx="3" fill="#5ac8be"/><rect x="90" y="76" width="20" height="12" rx="3" fill="#5ac8be"/><polygon points="64,92 136,92 100,130" fill="#5ac8be"/></g>
+      <g transform="rotate(14 100 130)" opacity="0.15"><rect x="90" y="44" width="20" height="12" rx="3" fill="#5ac8be"/><rect x="90" y="60" width="20" height="12" rx="3" fill="#5ac8be"/><rect x="90" y="76" width="20" height="12" rx="3" fill="#5ac8be"/><polygon points="64,92 136,92 100,130" fill="#5ac8be"/></g>
+      <rect x="90" y="44" width="20" height="12" rx="3" fill="url(#ico-g)"/><rect x="90" y="60" width="20" height="12" rx="3" fill="url(#ico-g)"/><rect x="90" y="76" width="20" height="12" rx="3" fill="url(#ico-g)"/>
+      <polygon points="64,92 136,92 100,130" fill="url(#ico-g)"/>
+      <line x1="56" y1="156" x2="144" y2="156" stroke="#5ac8be" stroke-width="3" stroke-linecap="round" opacity="0.4"/>
+    </svg>
+  </div>
+
+  <h1 class="reveal reveal-delay-1">Snag</h1>
+
+  <p class="hero-tagline reveal reveal-delay-2">
+    The Mac download manager that <em>won't let go</em>.
+  </p>
+
+  <p class="hero-sub reveal reveal-delay-3">
+    Multi-threaded. Auto-retry. Resumes from where it left off. Always.
+  </p>
+
+  <a href="#" class="cta-button reveal reveal-delay-4">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 21.99 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.1 21.99C7.79 22.03 6.8 20.68 5.96 19.47C4.25 16.99 2.97 12.5 4.7 9.56C5.55 8.08 7.13 7.16 8.84 7.14C10.13 7.12 11.33 8.01 12.12 8.01C12.91 8.01 14.37 6.93 15.91 7.1C16.54 7.13 18.37 7.36 19.56 9.07C19.47 9.13 17.29 10.39 17.31 13.03C17.34 16.18 20.05 17.21 20.08 17.22C20.05 17.29 19.61 18.87 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z"/></svg>
+    Download on the Mac App Store
+  </a>
+
+  <span class="cta-price reveal reveal-delay-5">&euro;4.99 &middot; macOS 14 Sonoma or later</span>
+
+  <div class="hero-download-bar reveal reveal-delay-5">
+    <span></span>
+  </div>
+</section>
+
+<!-- ═══ WHAT IS SNAG ═══ -->
+<section class="what-section">
+  <div class="section-inner">
+    <p class="section-label reveal">What is Snag?</p>
+    <h2 class="section-title reveal reveal-delay-1">Your files. Faster. <br>No matter what.</h2>
+    <p class="section-desc reveal reveal-delay-2">
+      Snag splits every download into parallel threads, grabs them simultaneously, and stitches them back together. If a thread drops? It picks back up. Server flaky? Snag doesn't care. It just keeps going.
+    </p>
+
+    <!-- macOS window mockup -->
+    <div class="window-mockup reveal reveal-delay-3">
+      <div class="window-chrome">
+        <div class="window-dots">
+          <div class="window-dot red"></div>
+          <div class="window-dot yellow"></div>
+          <div class="window-dot green"></div>
+        </div>
+        <div class="window-title-left">Snag</div>
+        <!-- native toolbar: buttons centred, search right -->
+        <div class="window-tb-group">
+          <div class="window-tb-btn teal"><svg width="15" height="15" viewBox="0 0 16 16"><circle cx="8" cy="8" r="7" fill="currentColor"/><line x1="8" y1="4.5" x2="8" y2="11.5" stroke="#1c1c24" stroke-width="1.8" stroke-linecap="round"/><line x1="4.5" y1="8" x2="11.5" y2="8" stroke="#1c1c24" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+          <div class="window-tb-btn"><svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M3 4h10M6 4V3a1 1 0 011-1h2a1 1 0 011 1v1M5 4v9a1 1 0 001 1h4a1 1 0 001-1V4"/></svg></div>
+          <div class="window-tb-btn"><svg width="11" height="11" viewBox="0 0 12 12" fill="currentColor"><rect x="2" y="1" width="3" height="10" rx="1"/><rect x="7" y="1" width="3" height="10" rx="1"/></svg></div>
+          <div class="window-tb-btn"><svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><circle cx="7" cy="7" r="5.5"/><path d="M5 7l1.5 1.5 3-3.5"/></svg></div>
+        </div>
+        <div class="window-search">
+          <svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="5" cy="5" r="3.5"/><line x1="7.5" y1="7.5" x2="10.5" y2="10.5"/></svg>
+          Filter
+        </div>
+      </div>
+      <div class="window-body">
+        <ul class="mock-downloads">
+          <li class="mock-dl">
+            <div class="mock-dl-icon active">&#x2B07;&#xFE0F;</div>
+            <div class="mock-dl-info">
+              <div class="mock-dl-namerow"><span class="mock-dl-name">Fedora-Workstation-Live-43-1.6.x86_64.iso</span><span class="mock-dl-size">1.71 GB / 2.55 GB</span></div>
+              <div class="mock-progress"><div class="mock-progress-fill" style="width:67%"></div></div>
+              <div class="mock-dl-status"><span>67%</span> <span>&#x2B07;&#xFE0F; 48.2 MB/s</span> <span>&#x23F0; 00:00:42</span></div>
+            </div>
+          </li>
+          <li class="mock-dl">
+            <div class="mock-dl-icon active">&#x2B07;&#xFE0F;</div>
+            <div class="mock-dl-info">
+              <div class="mock-dl-namerow"><span class="mock-dl-name">ubuntu-24.04.4-desktop-amd64.iso</span><span class="mock-dl-size">2.12 GB / 6.20 GB</span></div>
+              <div class="mock-progress"><div class="mock-progress-fill" style="width:34%"></div></div>
+              <div class="mock-dl-status"><span>34%</span> <span>&#x2B07;&#xFE0F; 31.7 MB/s</span> <span>&#x23F0; 00:02:18</span></div>
+            </div>
+          </li>
+          <li class="mock-dl">
+            <div class="mock-dl-icon done">&#x2705;</div>
+            <div class="mock-dl-info">
+              <div class="mock-dl-namerow"><span class="mock-dl-name">node-v22.14.0.pkg</span><span class="mock-dl-size">48.2 MB</span></div>
+              <div class="mock-progress"><div class="mock-progress-fill done"></div></div>
+              <div class="mock-dl-status"><span style="color:#27c93f">Complete</span></div>
+            </div>
+          </li>
+          <li class="mock-dl">
+            <div class="mock-dl-icon queued">&#x1F551;</div>
+            <div class="mock-dl-info">
+              <div class="mock-dl-namerow"><span class="mock-dl-name">archlinux-2026.03.01-x86_64.iso</span><span class="mock-dl-size">1.14 GB</span></div>
+              <div class="mock-progress"><div class="mock-progress-fill" style="width:0%"></div></div>
+              <div class="mock-dl-status"><span>Queued</span></div>
+            </div>
+          </li>
+        </ul>
+        <div class="mock-statusbar">
+          <span>&#x1F4C4; 4</span>
+          <span>&#x2B07;&#xFE0F; 2 active</span>
+          <span>&#x23F1;&#xFE0F; 79.9 MB/s</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FEATURES ═══ -->
+<section class="features-section">
+  <div class="section-inner">
+    <p class="section-label reveal">Features</p>
+    <h2 class="section-title reveal reveal-delay-1">Built for downloads<br>that fight back.</h2>
+    <p class="section-desc reveal reveal-delay-2">
+      Unreliable servers. Dropped connections. Files that vanish mid-transfer. Snag was built for all of it.
+    </p>
+
+    <div class="features-grid">
+      <div class="feature-card reveal">
+        <div class="feature-icon">&#x26A1;</div>
+        <h3>Multi-Threaded</h3>
+        <p>Splits downloads into parallel chunks using HTTP Range requests. Each thread grabs its piece simultaneously. More threads, more speed.</p>
+      </div>
+
+      <div class="feature-card reveal reveal-delay-1">
+        <div class="feature-icon">&#x1F504;</div>
+        <h3>Infinite Retry</h3>
+        <p>When a chunk fails, Snag retries with exponential backoff. Server 500? Timeout? It picks up from the exact byte it left off. Configurable per download.</p>
+      </div>
+
+      <div class="feature-card reveal reveal-delay-2">
+        <div class="feature-icon">&#x1F4E6;</div>
+        <h3>.snag Bundles</h3>
+        <p>Partial downloads are saved as .snag packages. Quit the app, restart your Mac, come back next week. Your download is right where you left it.</p>
+      </div>
+
+      <div class="feature-card reveal reveal-delay-3">
+        <div class="feature-icon">&#x1F4F6;</div>
+        <h3>Network Aware</h3>
+        <p>Monitors your connection. When you lose WiFi and reconnect, Snag automatically resumes errored downloads. No manual intervention.</p>
+      </div>
+
+      <div class="feature-card reveal reveal-delay-4">
+        <div class="feature-icon">&#x1F36A;</div>
+        <h3>Cookie Auth</h3>
+        <p>Paste a cookies.txt or JSON export from your browser. Snag matches cookies to domains and authenticates your downloads seamlessly.</p>
+      </div>
+
+      <div class="feature-card reveal reveal-delay-5">
+        <div class="feature-icon">&#x2696;&#xFE0F;</div>
+        <h3>No Bloat</h3>
+        <p>No torrents. No crypto mining. No built-in browser. No subscription. Just a native macOS app that downloads files. That's it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SPEED ═══ -->
+<section class="speed-section">
+  <div class="speed-inner">
+    <p class="section-label reveal">Speed</p>
+    <h2 class="section-title reveal reveal-delay-1">Why wait in a<br>single-file queue?</h2>
+    <p class="section-desc reveal reveal-delay-2">
+      Most download tools use one connection. Snag splits the file into chunks and downloads them all at once.
+    </p>
+
+    <div class="speed-visual reveal reveal-delay-3">
+      <div class="speed-comparison">
+        <div class="speed-col">
+          <h4>Single Thread</h4>
+          <div class="speed-bar-wrap">
+            <div class="speed-bar">
+              <div class="speed-bar-fill single" data-width="30%" style="width:0%"></div>
+            </div>
+          </div>
+          <div class="speed-time">2.1 GB file &mdash; <span>4m 12s</span></div>
+        </div>
+        <div class="speed-col">
+          <h4>Snag &middot; 8 Threads</h4>
+          <div class="speed-bar-wrap">
+            <div class="speed-bar">
+              <div class="speed-bar-fill multi" data-width="95%" style="width:0%"></div>
+            </div>
+          </div>
+          <div class="speed-time">2.1 GB file &mdash; <span>0m 52s</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ BOTTOM CTA ═══ -->
+<section class="bottom-cta">
+  <p class="section-label reveal">Get Snag</p>
+  <h2 class="section-title reveal reveal-delay-1">Grab it. Keep it. Forever.</h2>
+  <div class="bottom-price reveal reveal-delay-2">&euro;4.99</div>
+  <p class="bottom-price-note reveal reveal-delay-3">One-time purchase. No subscription. No in-app purchases.</p>
+
+  <a href="#" class="cta-button reveal reveal-delay-4">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 21.99 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.1 21.99C7.79 22.03 6.8 20.68 5.96 19.47C4.25 16.99 2.97 12.5 4.7 9.56C5.55 8.08 7.13 7.16 8.84 7.14C10.13 7.12 11.33 8.01 12.12 8.01C12.91 8.01 14.37 6.93 15.91 7.1C16.54 7.13 18.37 7.36 19.56 9.07C19.47 9.13 17.29 10.39 17.31 13.03C17.34 16.18 20.05 17.21 20.08 17.22C20.05 17.29 19.61 18.87 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z"/></svg>
+    Download on the Mac App Store
+  </a>
+
+  <p class="bottom-requirements reveal reveal-delay-5">Requires macOS 14 Sonoma or later</p>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="footer-links">
+    <a href="/snag-privacy/">Privacy Policy</a>
+    <a href="mailto:jason@jasonmadigan.com">Contact</a>
+  </div>
+  <p>&copy; 2026 Jason Madigan. Made in Waterford, Ireland.</p>
+</footer>
+
+<script>
+// scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.15 });
+
+reveals.forEach(el => observer.observe(el));
+
+// animate speed bars when visible
+const speedBars = document.querySelectorAll('.speed-bar-fill[data-width]');
+const speedObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      setTimeout(() => {
+        entry.target.style.width = entry.target.dataset.width;
+      }, 400);
+    }
+  });
+}, { threshold: 0.5 });
+
+speedBars.forEach(el => speedObserver.observe(el));
+
+// animate the mock download progress bars
+function animateMockDownloads() {
+  const fills = document.querySelectorAll('.mock-progress-fill:not(.done)');
+  fills.forEach(fill => {
+    let current = parseFloat(fill.style.width) || 0;
+    if (current < 99) {
+      current += Math.random() * 0.3;
+      fill.style.width = Math.min(current, 99) + '%';
+    }
+  });
+  requestAnimationFrame(animateMockDownloads);
+}
+animateMockDownloads();
+</script>
+
+</body>
+</html>
