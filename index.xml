@@ -1,4 +1,12 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Jason Madigan</title><link>/</link><description>Recent content on Jason Madigan</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Mon, 30 Mar 2026 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml"/><item><title>Snag - Privacy Policy</title><link>/snag-privacy/</link><pubDate>Mon, 30 Mar 2026 00:00:00 +0000</pubDate><guid>/snag-privacy/</guid><description>&lt;h2 id="privacy-policy-for-snag">Privacy Policy for Snag&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Jason Madigan</title><link>/</link><description>Recent content on Jason Madigan</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Tue, 14 Apr 2026 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml"/><item><title>Snag - Support</title><link>/snag-support/</link><pubDate>Tue, 14 Apr 2026 00:00:00 +0000</pubDate><guid>/snag-support/</guid><description>&lt;h2 id="support-for-snag">Support for Snag&lt;/h2>
+&lt;p>Need help with Snag? Here&amp;rsquo;s how to get in touch.&lt;/p>
+&lt;h3 id="contact">Contact&lt;/h3>
+&lt;p>Email: &lt;a href="mailto:jason@jasonmadigan.com">jason@jasonmadigan.com&lt;/a>&lt;/p>
+&lt;h3 id="common-questions">Common Questions&lt;/h3>
+&lt;p>&lt;strong>Where are my files saved?&lt;/strong>
+By default, Snag saves files to your Downloads folder. You can change the save location for each download or set a default in Preferences.&lt;/p>
+&lt;p>&lt;strong>How do I resume a failed download?&lt;/strong>
+Snag automatically retries failed chunks with configurable retry delays. If a download shows an error, right-click and select Resume, or it will retry on its own.&lt;/p></description></item><item><title>Snag - Privacy Policy</title><link>/snag-privacy/</link><pubDate>Mon, 30 Mar 2026 00:00:00 +0000</pubDate><guid>/snag-privacy/</guid><description>&lt;h2 id="privacy-policy-for-snag">Privacy Policy for Snag&lt;/h2>
 &lt;p>&lt;strong>Last updated: 30 March 2026&lt;/strong>&lt;/p>
 &lt;p>Snag is a macOS download manager developed by Jason Madigan.&lt;/p>
 &lt;h3 id="data-collection">Data Collection&lt;/h3>
