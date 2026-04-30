@@ -10,17 +10,17 @@ I'd also figured out the legals - the IAA didn't seem to be able to grant permis
 
 Frequently checking the [CUSF Landing Predictor](http://habhub.org/predict/), I finally happened upon a good weekend at the end of June. The winds were calm and a predicted landing that wasn't in either the sea or a lake - all good! I contacted the CAA at short notice for permission to launch, and they were very helpful and prompt - I received permission documentation the following day.
 
-![hab](https://live.staticflickr.com/65535/9404557416_e7c5a7cdf1_z.jpg)
+![hab](/images/hab/9404557416.png)
 
 My payload was complete - I'd bought a 42 inch Spherachute and a 1000g Hwoyee weather balloon from the good people at [Random Aerospace](http://randomaerospace.com/). I'd also sourced a small polystyrene payload box. For recording 1080p video, I finally settled on the excellent [Veho Muvi HD](http://www.amazon.co.uk/gp/product/B004AP9FSE/ref=as_li_ss_tl?ie=UTF8&camp=1634&creative=19450&creativeASIN=B004AP9FSE&linkCode=as2&tag=jasomadi-21) - the video captured turned out better than I'd ever imagined.
 
-![hab](https://farm6.staticflickr.com/5323/9401843329_38798db985_z.jpg)
+![hab](/images/hab/9401843329.jpg)
 
 The launch was a great success, with most things working as planned. The vertical radiator of the antenna broke off while we quickly tied off the balloon after filling.
 
-![hab](https://farm6.staticflickr.com/5350/9404599560_22cbb44648_b.jpg)
+![hab](/images/hab/9404599560.jpg)
 
-![hab](https://farm4.staticflickr.com/3691/9401831717_366f7ec9e8_b.jpg)
+![hab](/images/hab/9401831717.jpg)
 
 I thought this would mean we wouldn't get any live telemetry during the flight. But as it turned out, because the balloon was high above the horizon with no obstacles in the way, the transmitter's weak 10mW signal was received clearly throughout by us in the car with a little handheld receiver as we chased the balloon.
 
@@ -28,9 +28,9 @@ While chasing, however, it become obvious that the GPS on board was not receivin
 
 Two and a half hours after launch, with the payload still transmitting the same 4km, I was able to call the payload once more - which meant it was descending and was close to landing. After about 30 minutes of frantic texting "where" over and over to the payload box, it finally responded with it's actual location. After landing, the GPS had regained a lock. The backup tracker refused to give us it's location throughout, presumably (I thought) because the payload box had tipped over. We raced towards the field where it had landed only to find that it had landed with some very curious cows. Eventually, after concocting a distraction, I managed to hop the gate and recover our payload - all in tact and still working.
 
-![hab](https://farm6.staticflickr.com/5525/9404572538_34abc379c5_b.jpg)
+![hab](/images/hab/9404572538.jpg)
 
-![hab](https://farm8.staticflickr.com/7333/9404579646_7a9766f02e_b.jpg)
+![hab](/images/hab/space.png)
 
 
 Source
