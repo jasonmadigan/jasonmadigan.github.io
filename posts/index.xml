@@ -69,42 +69,7 @@ it&amp;rsquo;s also pretty damn nice by itself too. It was a ton of fun to write
 and it was nice to do something like it for a local paper, &lt;a href="http://www.munster-express.ie/">The Munster
 Express&lt;/a>.&lt;/p>
 &lt;p>Check it out
-&lt;a href="http://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/browserRedirect?url=itms%253A%252F%252Fax.itunes.apple.com%252FWebObjects%252FMZStore.woa%252Fwa%252FviewSoftware%253Fid%253D300295436%2526mt%253D8">here&lt;/a>&lt;/p></description></item><item><title>Ruby Christmas</title><link>/posts/2008-12-21-ruby-christmas/</link><pubDate>Sun, 21 Dec 2008 21:00:00 +0000</pubDate><guid>/posts/2008-12-21-ruby-christmas/</guid><description>&lt;p>Thanks &amp;ldquo;whoever you are&amp;rdquo; :http://pastie.org/344030.&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-ruby" data-lang="ruby">&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;/|&amp;#34;&lt;/span>\
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;/wl)e&amp;#34;&lt;/span>;eval(\
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;A | A&amp;#34;&lt;/span>\
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;A | A&amp;#34;&lt;/span>\
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> \
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;InHhL&amp;#34;&lt;/span>\
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;,Z,%w{-&amp;#34;&lt;/span>\
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;,Y&amp;amp;/LH,L*&amp;#34;&lt;/span>\
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;cCnd,Hh&amp;amp;/d,&amp;#34;&lt;/span>\
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;YCB/Hh,Y&amp;amp;YHh,&amp;#34;&lt;/span>\
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;L&amp;amp;xHh,L*v*nHh,*&amp;#34;&lt;/span>\
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;&amp;amp;ghHh,n&amp;amp;nHh,H*nHh&amp;#34;&lt;/span>\
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;,*q*v*nHh,Hw*qv*Hh}&amp;#34;&lt;/span>\
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;Iq&amp;amp;n*L,Z,[,n&amp;amp;qK,n&amp;amp;qK,&amp;#34;&lt;/span>\
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;@TwC,LH/&amp;amp;ng,gLBbL@K,@Th&amp;#34;&lt;/span>\
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;/**,YC/k*d,Hh/*QdL@K,@FCB&amp;#34;&lt;/span>\
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;/,cQqq&amp;amp;ng,=/CcL@K,@F&amp;amp;v*,RBb&amp;#34;&lt;/span>\
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;y,g*mL!@K,@S&amp;amp;x,mQ/LhQqL,dBm=&amp;amp;&amp;#34;&lt;/span>\
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;ng@K,@S*v*n,dBckL,Q-Hy=&amp;amp;ng@K,@E&amp;#34;&lt;/span>\
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;&amp;amp;ghH,d&amp;amp;/L,Q-gqCbb&amp;amp;ng@K,@N&amp;amp;n*,/Qng&amp;#34;&lt;/span>\
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;*L,LH*==&amp;amp;ng@K,@T*n,H/yL,Q-cQHch&amp;amp;ng@&amp;#34;&lt;/span>\
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;K,@Eq*v*n,&amp;amp;CL,=&amp;amp;=&amp;amp;ng@K,@Tw*qv*,mCnk*y&amp;#34;&lt;/span>\
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;L,=QHch&amp;amp;ng@,]IDAJJA2)J*Qch,dC,U&amp;amp;UI=/&amp;amp;nH&amp;#34;&lt;/span>\
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;,@&lt;/span>&lt;span style="color:#ae81ff">\n&lt;/span>&lt;span style="color:#e6db74">On,Hh*,&lt;/span>&lt;span style="color:#ae81ff">\#&lt;/span>&lt;span style="color:#e6db74">{nHhL[&amp;amp;]},dQy,CY,MQHzmQL,my,&amp;#34;&lt;/span>\
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;H/B*,qCv*,gQv*,HC,m*:&lt;/span>&lt;span style="color:#ae81ff">\n&lt;/span>&lt;span style="color:#e6db74">@I&amp;amp;JdCwnHCD2),dC,UjU&amp;#34;&lt;/span>\
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;I=/&amp;amp;nH,@,,,&lt;/span>&lt;span style="color:#ae81ff">\#&lt;/span>&lt;span style="color:#e6db74">{q&amp;amp;n*L[j]}&lt;/span>&lt;span style="color:#ae81ff">\n&lt;/span>&lt;span style="color:#e6db74">@I*ndI=/&amp;amp;nHDD&amp;amp;,ZZ,A)&amp;#34;&lt;/span>\
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;?,@,,&amp;#34;&lt;/span>\
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;,G@,:&amp;#34;&lt;/span>\
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;,@,,,&amp;#34;&lt;/span>\
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;Gnd,Q&amp;#34;&lt;/span>\
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;@)I=/&amp;#34;&lt;/span>\
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;&amp;amp;nH,@,n*w,v*/L&amp;amp;Cn,CY,RBby!&lt;/span>&lt;span style="color:#ae81ff">\n&lt;/span>&lt;span style="color:#e6db74">@I*nd&amp;#34;&lt;/span>\
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;I&amp;#34;&lt;/span>&lt;span style="color:#f92672">.&lt;/span>tr(&lt;span style="color:#e6db74">&amp;#39; ID/VHLYGBqCA&amp;amp;|*UQJ=Z@K,&amp;#39;&lt;/span>,
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#39;+;(r/tsfAulo1i8e|a.p=&amp;#34;, &amp;#39;&lt;/span>))
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>JavaScript flexes its muscles</title><link>/posts/2008-09-04-javascript-flexes-its-muscles/</link><pubDate>Thu, 04 Sep 2008 21:00:00 +0000</pubDate><guid>/posts/2008-09-04-javascript-flexes-its-muscles/</guid><description>&lt;p>It&amp;rsquo;s an exciting time for JavaScript developers. Over the past few
+&lt;a href="http://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/browserRedirect?url=itms%253A%252F%252Fax.itunes.apple.com%252FWebObjects%252FMZStore.woa%252Fwa%252FviewSoftware%253Fid%253D300295436%2526mt%253D8">here&lt;/a>&lt;/p></description></item><item><title>JavaScript flexes its muscles</title><link>/posts/2008-09-04-javascript-flexes-its-muscles/</link><pubDate>Thu, 04 Sep 2008 21:00:00 +0000</pubDate><guid>/posts/2008-09-04-javascript-flexes-its-muscles/</guid><description>&lt;p>It&amp;rsquo;s an exciting time for JavaScript developers. Over the past few
 months, we&amp;rsquo;ve seen all sorts of cool things coming our way. We&amp;rsquo;ve seen
 new fast, heavily optimised JavaScript virtual machines such as
 WebKit&amp;rsquo;s&lt;a href="http://webkit.org/blog/189/announcing-squirrelfish/">SquirrelFish&lt;/a>,
@@ -129,13 +94,7 @@ of nasty to me, mostly because the bit-banging used for serial
 communication to try to ensure no data is missed in transition. The
 Arduino IDE is okay I guess (for a Java app), but if you like Ruby you
 may want to check out &lt;a href="http://rad.rubyforge.org/">RAD&lt;/a>. Looks like RAD
-only works with version 10 of the arduino SDK right now though.&lt;/p></description></item><item><title>iRot - iPhone development is fun</title><link>/posts/2008-02-18-irot-iphone-development-is-fun/</link><pubDate>Mon, 18 Feb 2008 21:00:00 +0000</pubDate><guid>/posts/2008-02-18-irot-iphone-development-is-fun/</guid><description>&lt;p>Over the weekend I decided to try my hand at a little iPhone
-development. My Objective-C skill is non-existant, and my C skill is
-incredibly rusty - but I pressed on. First up was installation of the
-toolchain required to compile native applications. This one was tough,
-very tough. After much swearing and shouting, I finally managed to get
-it to install. The iPhone dev team&amp;rsquo;s official instructions were of help
-right up until&lt;/p></description></item><item><title>An end to a ridiculous restore path</title><link>/posts/2008-02-12-an-end-to-a-ridiculous-restore-path/</link><pubDate>Tue, 12 Feb 2008 21:00:00 +0000</pubDate><guid>/posts/2008-02-12-an-end-to-a-ridiculous-restore-path/</guid><description>&lt;p>Finally. Restoring an iPhone is no longer quite so painful. No more
+only works with version 10 of the arduino SDK right now though.&lt;/p></description></item><item><title>An end to a ridiculous restore path</title><link>/posts/2008-02-12-an-end-to-a-ridiculous-restore-path/</link><pubDate>Tue, 12 Feb 2008 21:00:00 +0000</pubDate><guid>/posts/2008-02-12-an-end-to-a-ridiculous-restore-path/</guid><description>&lt;p>Finally. Restoring an iPhone is no longer quite so painful. No more
 jumping through hoops downgrading to 1.1.1 and slowly clawing your way
 back up to 1.1.3 with all manner of ridiculous soft updates. Thanks to
 Zibree&amp;rsquo;s
@@ -176,25 +135,7 @@ time being. If you&amp;rsquo;re brave and fearless you can follow geohot&amp;rsq
 to doing this
 &lt;a href="http://iphonejtag.blogspot.com/2008/01/112-otb-unlocked.html">here&lt;/a>&lt;/p>
 &lt;p>A 1.1.3 jailbreak still seems to be a ways off, with the good old
-symbolic link method seemingly neutered.&lt;/p></description></item><item><title>Dearest NVIDIA,</title><link>/posts/2008-01-04-dearest-nvidia/</link><pubDate>Fri, 04 Jan 2008 21:00:00 +0000</pubDate><guid>/posts/2008-01-04-dearest-nvidia/</guid><description>&lt;p>Please please please fire whoever is in charge of naming conventions. I
-present to you, dear readers, the 8800 series in order of performance:&lt;/p>
-&lt;ul>
-&lt;li>8800 GS 384MB&lt;/li>
-&lt;li>8800 GS 768MB&lt;/li>
-&lt;li>8800 GTS 320MB&lt;/li>
-&lt;li>8800 GTS 640MB&lt;/li>
-&lt;li>8800 GT 256MB&lt;/li>
-&lt;li>8800 GT 512MB&lt;/li>
-&lt;li>8800 GTS 512MB&lt;/li>
-&lt;li>8800 GTX 768MB&lt;/li>
-&lt;li>8800 ULTRA 768MB&lt;/li>
-&lt;/ul>
-&lt;p>Remember the old days when explaining what graphics card you had went
-something like this?&lt;/p>
-&lt;p>&amp;ldquo;So yeah, what kind of graphics card do you have?&amp;rdquo;&lt;/p></description></item><item><title>ROT13 in Ruby</title><link>/posts/2007-12-19-rot13-in-ruby/</link><pubDate>Wed, 19 Dec 2007 21:00:00 +0000</pubDate><guid>/posts/2007-12-19-rot13-in-ruby/</guid><description>&lt;p>Ruby&amp;rsquo;s string lib is pretty cool ok:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-ruby" data-lang="ruby">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74">&amp;#34;babby&amp;#34;&lt;/span>&lt;span style="color:#f92672">.&lt;/span>tr(&lt;span style="color:#e6db74">&amp;#34;A-Ma-mN-Zn-z&amp;#34;&lt;/span>,&lt;span style="color:#e6db74">&amp;#34;N-Zn-zA-Ma-m&amp;#34;&lt;/span>)
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">=&amp;gt;&lt;/span> &lt;span style="color:#e6db74">&amp;#34;onool&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>iPhone bootloader changes</title><link>/posts/2007-11-19-iphone-bootloader-changes/</link><pubDate>Mon, 19 Nov 2007 21:00:00 +0000</pubDate><guid>/posts/2007-11-19-iphone-bootloader-changes/</guid><description>&lt;p>For anyone thinking of purchasing an iPhone in the near future, be aware
+symbolic link method seemingly neutered.&lt;/p></description></item><item><title>iPhone bootloader changes</title><link>/posts/2007-11-19-iphone-bootloader-changes/</link><pubDate>Mon, 19 Nov 2007 21:00:00 +0000</pubDate><guid>/posts/2007-11-19-iphone-bootloader-changes/</guid><description>&lt;p>For anyone thinking of purchasing an iPhone in the near future, be aware
 that Apple is now shipping iPhones with an updated bootloader
 (4.6_M3S2) which has seen the a number of unlocking avenues closed.&lt;/p>
 &lt;p>All iPhone&amp;rsquo;s shipped after week 45 are very likely to have 1.1.2
@@ -248,51 +189,7 @@ sent &lt;em>from&lt;/em> the iPhone. This means listening for keys is no longer
 possible, which means decrypting ramdisks is also no longer possible.
 The whole thing is a tremendous pain in the ass but absolutely nobody
 can say this wasn&amp;rsquo;t expected. Just deal with it and accept it; we all
-knew what we were getting ourselves in for.&lt;/p></description></item><item><title>iPhone - Voicemail Notification</title><link>/posts/2007-09-15-iphone-voicemail-notification/</link><pubDate>Sat, 15 Sep 2007 21:00:00 +0000</pubDate><guid>/posts/2007-09-15-iphone-voicemail-notification/</guid><description>&lt;p>I&amp;rsquo;ve noticed some weird issues regarding certain kinds of SMS messages
-not being delivered properly to my iPhone. Specifically, voicemail alert
-alerts sent by SMS never land in my inbox at all. After doing a little
-digging, it seems that the iPhone&amp;rsquo;s baseband has trouble interpreting
-incoming SMS messages coming from &lt;a href="http://en.wikipedia.org/wiki/Short_code">short
-codes&lt;/a>.&lt;/p>
-&lt;p>Since short codes are used quite a bit in Europe for promotions, banking
-and the like I should think that the firmware shipping on European
-iPhone&amp;rsquo;s will have fixed this. In the meantime we&amp;rsquo;ll have to keep
-digging to try to find a workaround.&lt;/p></description></item><item><title>iPhone - Voicemail Button</title><link>/posts/2007-09-13-iphone-voicemail-button/</link><pubDate>Thu, 13 Sep 2007 21:00:00 +0000</pubDate><guid>/posts/2007-09-13-iphone-voicemail-button/</guid><description>&lt;p>You can use your iPhone&amp;rsquo;s Voicemail button to call your local carriers
-voicemail number by doing the following:&lt;/p>
-&lt;ul>
-&lt;li>Disable your SIM PIN, if enabled.&lt;/li>
-&lt;li>SSH into your iPhone - I&amp;rsquo;m going to assume your iPhone has been
-jailbroken, has SSH installed and the latest BSD Subsystem
-installed.&lt;/li>
-&lt;li>The latest BSD Subsystem (1.5) comes with minicom, but you&amp;rsquo;ll need
-to generate a configuration file for it to interact with the
-baseband. You&amp;rsquo;ll need to create &lt;code>/local/etc/&lt;/code> in &lt;code>/usr/&lt;/code>.&lt;/li>
-&lt;li>In &lt;code>/usr/local/etc/&lt;/code>, run &lt;code>nano minirc.dfl&lt;/code> and paste
-&lt;code>pu port /dev/tty.baseband&lt;/code>&lt;/li>
-&lt;li>Save the file, &lt;code>CTRL-O&lt;/code>, exit nano &lt;code>CTRL-X&lt;/code>&lt;/li>
-&lt;li>Disable the commcenter -
-&lt;code>launchctl unload -w /System/Library/LaunchDaemons/com.apple.CommCenter.plist&lt;/code>&lt;/li>
-&lt;li>Run@ minicom@&lt;/li>
-&lt;li>Run@ AT+CSVM=1,&amp;ldquo;171&amp;rdquo; `where 171 is your carriers voicemail number
-&lt;ul>
-&lt;li>Exit minicom - &lt;code>CTRL-a&lt;/code>, then `q@&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>Restart the commcenter
-&lt;code>- launchctl load -w /System/Library/LaunchDaemons/com.apple.CommCenter.plist&lt;/code>&lt;/li>
-&lt;li>Done!&lt;/li>
-&lt;/ul></description></item><item><title>Mail.app - IMAP Niggles</title><link>/posts/2007-08-24-mail-app-imap-niggles/</link><pubDate>Fri, 24 Aug 2007 21:00:00 +0000</pubDate><guid>/posts/2007-08-24-mail-app-imap-niggles/</guid><description>&lt;p>I&amp;rsquo;d always used one single email account and tried, wherever possible,
-to keep these accounts completely separate from one another. At work I
-now find myself using two IMAP accounts, one for work and one personal
-account. Setting the accounts up is a doddle, but I noticed that
-messages I was sending from my work account where not getting stored in
-my mailbox.&lt;/p>
-&lt;p>After some fiddling I found that to have messages sent from one account
-stored in the sent mailbox for that account, you need to explicitly tell
-Mail.app what each of the server-side folders are to be used for. To
-specify this, click on them and go to Mailbox &amp;gt;Use this mailbox for &amp;gt;
-Sent/Drafts/Trash. I just thought I&amp;rsquo;d share in case anyone else comes up
-against this problem.&lt;/p></description></item><item><title>Guide to unlocking your iPhone with a Turbo SIM</title><link>/posts/2007-08-16-guide-to-unlocking-your-iphone-with-a-turbo-sim/</link><pubDate>Thu, 16 Aug 2007 21:00:00 +0000</pubDate><guid>/posts/2007-08-16-guide-to-unlocking-your-iphone-with-a-turbo-sim/</guid><description>&lt;p>Since receiving my Turbo SIM yesterday and successfully getting it to
+knew what we were getting ourselves in for.&lt;/p></description></item><item><title>Guide to unlocking your iPhone with a Turbo SIM</title><link>/posts/2007-08-16-guide-to-unlocking-your-iphone-with-a-turbo-sim/</link><pubDate>Thu, 16 Aug 2007 21:00:00 +0000</pubDate><guid>/posts/2007-08-16-guide-to-unlocking-your-iphone-with-a-turbo-sim/</guid><description>&lt;p>Since receiving my Turbo SIM yesterday and successfully getting it to
 work with O2 Ireland, I thought I&amp;rsquo;d write up a clear, easy to understand
 guide outlining the process.&lt;/p>
 &lt;p>&lt;em>Disclaimer: If you break something it&amp;rsquo;s your own stupid fault
@@ -356,42 +253,7 @@ included at&amp;amp;t SIM card&amp;rsquo;s
 &lt;a href="http://en.wikipedia.org/wiki/International_Mobile_Subscriber_Identity">IMSI&lt;/a>
 two times initially at startup to ensure the IMSI is that of at&amp;amp;t. The
 third and subsequent reads of the IMSI during the normal operation of
-the iPhone is not checked to ensure it is that of at&amp;amp;t.&lt;/p></description></item><item><title>Even more iPhone first impressions (because I own this one)</title><link>/posts/2007-08-02-even-more-iphone-first-impressions-because-i-own-this-one/</link><pubDate>Thu, 02 Aug 2007 21:00:00 +0000</pubDate><guid>/posts/2007-08-02-even-more-iphone-first-impressions-because-i-own-this-one/</guid><description>&lt;p>I had a nice surprise waiting for me when I arrived home yesterday. I was like a kid at Christmas opening the box for this thing. I hadn&amp;rsquo;t been so excited about a gadget for a long time. As mentioned a few posts ago, I&amp;rsquo;d gotten to play with one at work over the past few weeks but nothing compares to owning one and getting to play with one on your own time. The design, as with all things Apple, is elegant, simple and gorgeous. The screen is amazingly bright and it&amp;rsquo;s resolution of 320x480 at 160PPI is incredible. In my spare time this evening I&amp;rsquo;ve toyed a little with some development/design for an iPhone interface for Runt. I&amp;rsquo;ll post some more about this over the next few days or whenever I get a chance. It means so much to have a real browser in a mobile phone.&lt;/p></description></item><item><title>iPhone JTAG Interface discovered</title><link>/posts/2007-08-02-iphone-jtag-interface-discovered/</link><pubDate>Thu, 02 Aug 2007 21:00:00 +0000</pubDate><guid>/posts/2007-08-02-iphone-jtag-interface-discovered/</guid><description>&lt;p>George Hotz (geohot) over at #iphone.unlock on Undernet finally uncovered the iPhone Baseband&amp;rsquo;s (S-Gold 2) &lt;a href="http://en.wikipedia.org/wiki/Joint_Test_Action_Group">JTAG&lt;/a> interface, which means an unlocking solution (albeit hardware based for the moment) is within reach. Geohot initally thought the JTAG interface may have been been located in the dock, but his search proved fruitless. Accessing these traces is incredibly difficult because the board has many layers and blind via&amp;rsquo;s, and in the end could only be done by removing the S-Gold 2 from the baseband board altogether, which meant wrecking the board.&lt;/p></description></item><item><title>Quick &amp; Easy Wordpress Optimisation</title><link>/posts/2007-07-23-quick-and-easy-wordpress-optimisation/</link><pubDate>Mon, 23 Jul 2007 21:00:00 +0000</pubDate><guid>/posts/2007-07-23-quick-and-easy-wordpress-optimisation/</guid><description>&lt;p>Here&amp;rsquo;s two quick and easy steps you can take to increase your Wordpress
-sites speed:&lt;/p>
-&lt;h2 id="enable-wordpresss-object-caching">Enable Wordpress&amp;rsquo;s Object Caching&lt;/h2>
-&lt;p>Add define(&amp;lsquo;ENABLE_CACHE&amp;rsquo;, true); to your wp-config.php to enable
-Wordpress&amp;rsquo;s built in &lt;a href="http://codex.wordpress.org/Function_Reference/WP_Cache">object
-caching&lt;/a> and
-Wordpress will begin caching all sorts of database queries resulting in
-an instantaneous performance boost.&lt;/p>
-&lt;h2 id="install-wp-cache-2">Install WP-Cache 2&lt;/h2>
-&lt;p>&lt;a href="http://mnm.uib.es/gallir/wp-cache-2/">WP-Cache&lt;/a> is a plugin which
-serializes and caches posts to disk for quick retrieval. It&amp;rsquo;s also smart
-enough to keep serialized data on the disk up to date so it won&amp;rsquo;t serve
-stale content.&lt;/p></description></item><item><title>iPhone - First Impressions</title><link>/posts/2007-07-11-iphone-first-impressions/</link><pubDate>Wed, 11 Jul 2007 21:00:00 +0000</pubDate><guid>/posts/2007-07-11-iphone-first-impressions/</guid><description>&lt;p>At work today I finally got my hands on an iPhone. It was everything I&amp;rsquo;d
-hoped for. Beautiful design, much smaller than I&amp;rsquo;d imagined and pretty
-sturdy. I played around with viewing a movie, playing with the camera
-and generally poking about the parts of the phone which didn&amp;rsquo;t require
-the GSM radio. I want one. I mean, I wanted one before but without
-having held and used one it&amp;rsquo;s very easy to dismiss purchasing it by
-saying to yourself &amp;ldquo;Oh, I&amp;rsquo;ll wait, you know firsthand what first gen
-Apple hardware is like&amp;rdquo; or &amp;ldquo;But, but 3G!&amp;rdquo;. I&amp;rsquo;m very tempted to take the
-plunge and import one in the hope that the radio will get unlocked quite
-soon.&lt;/p></description></item><item><title>Oh Steve</title><link>/posts/2007-06-13-oh-steve/</link><pubDate>Wed, 13 Jun 2007 21:00:00 +0000</pubDate><guid>/posts/2007-06-13-oh-steve/</guid><description>&lt;p>You cad, you.&lt;/p>
-&lt;blockquote>
-&lt;p>But but but you guys you don&amp;rsquo;t understand! A poorly written
-application could crash AT&amp;amp;T&amp;rsquo;s network!&lt;/p>
-&lt;/blockquote>
-&lt;p>I&amp;rsquo;d sort of expected that Apple would end up giving developers access to
-a Widget-like API for the iPhone. It&amp;rsquo;s disappointing that it turned out
-to be true but I guess it&amp;rsquo;s sort of good news for dorky web developers
-like me. It&amp;rsquo;s still a complete cop-out, though. Regardless of how neat
-AJAX Web 2.0 (jesus I really hate referring to things as Web 2.0)
-applications can be made to be to look and perform, it&amp;rsquo;s still
-absolutely no substitute to having access to OS X&amp;rsquo;s core cocoa APIs such
-as Core Image, Core Video, Core Audio and Core Animation (well, assuming
-the iPhone is running Leopard). Which reminds me, I really should get to
-leafing through that Objective-C book I bought a while ago.&lt;/p></description></item><item><title>Why you shouldn't place your trust in someone else's code</title><link>/posts/2007-06-03-why-you-shouldnt-place-your-trust-in-someone-elses-code/</link><pubDate>Sun, 03 Jun 2007 21:00:00 +0000</pubDate><guid>/posts/2007-06-03-why-you-shouldnt-place-your-trust-in-someone-elses-code/</guid><description>&lt;p>About two years ago I used to regularly play World of Warcraft;
+the iPhone is not checked to ensure it is that of at&amp;amp;t.&lt;/p></description></item><item><title>iPhone JTAG Interface discovered</title><link>/posts/2007-08-02-iphone-jtag-interface-discovered/</link><pubDate>Thu, 02 Aug 2007 21:00:00 +0000</pubDate><guid>/posts/2007-08-02-iphone-jtag-interface-discovered/</guid><description>&lt;p>George Hotz (geohot) over at #iphone.unlock on Undernet finally uncovered the iPhone Baseband&amp;rsquo;s (S-Gold 2) &lt;a href="http://en.wikipedia.org/wiki/Joint_Test_Action_Group">JTAG&lt;/a> interface, which means an unlocking solution (albeit hardware based for the moment) is within reach. Geohot initally thought the JTAG interface may have been been located in the dock, but his search proved fruitless. Accessing these traces is incredibly difficult because the board has many layers and blind via&amp;rsquo;s, and in the end could only be done by removing the S-Gold 2 from the baseband board altogether, which meant wrecking the board.&lt;/p></description></item><item><title>Why you shouldn't place your trust in someone else's code</title><link>/posts/2007-06-03-why-you-shouldnt-place-your-trust-in-someone-elses-code/</link><pubDate>Sun, 03 Jun 2007 21:00:00 +0000</pubDate><guid>/posts/2007-06-03-why-you-shouldnt-place-your-trust-in-someone-elses-code/</guid><description>&lt;p>About two years ago I used to regularly play World of Warcraft;
 something which I&amp;rsquo;m not particularly proud of. While doing so I managed
 and maintained a small community site for our guild. Our guild was
 comprised of several members of the somethingawful forums and, as such,
@@ -434,13 +296,7 @@ system. The shopping cart as it stands right now is a pretty hacked up
 version of &lt;a href="http://www.oscommerce.com/">OSCommerce&lt;/a> which has been
 slowly disintegrating over the past year. No less than 4 times in the
 past year I&amp;rsquo;ve had a call from my brother where it had broken
-unexpectedly, seemingly without any user interaction whatsoever.&lt;/p></description></item><item><title>Bloggin' the Blogosphere (Web two point oh)</title><link>/posts/2007-05-19-bloggin-the-blogosphere-web-two-point-oh/</link><pubDate>Sat, 19 May 2007 21:00:00 +0000</pubDate><guid>/posts/2007-05-19-bloggin-the-blogosphere-web-two-point-oh/</guid><description>&lt;p>I never thought I&amp;rsquo;d actually have any use for a blog (and to be honest
-I&amp;rsquo;d always found myself struggling to see why other people needed them
-too), but I guess what with working on new projects and having finally
-completed college I could do with some place to organise my ramblings,
-so here we are.&lt;/p>
-&lt;p>I&amp;rsquo;d been meaning to put together an online portfolio with quite some
-time now, so I guess now is as good a time as any.&lt;/p></description></item><item><title>Runt - almost ready for release</title><link>/posts/2007-05-19-runt-almost-ready-for-release/</link><pubDate>Sat, 19 May 2007 21:00:00 +0000</pubDate><guid>/posts/2007-05-19-runt-almost-ready-for-release/</guid><description>&lt;p>For the past few months at &lt;a href="http://www.wit.ie/">college&lt;/a> I&amp;rsquo;ve been
+unexpectedly, seemingly without any user interaction whatsoever.&lt;/p></description></item><item><title>Runt - almost ready for release</title><link>/posts/2007-05-19-runt-almost-ready-for-release/</link><pubDate>Sat, 19 May 2007 21:00:00 +0000</pubDate><guid>/posts/2007-05-19-runt-almost-ready-for-release/</guid><description>&lt;p>For the past few months at &lt;a href="http://www.wit.ie/">college&lt;/a> I&amp;rsquo;ve been
 developing a web-based Rails application called Runt; Ruby Network Tool.
 It&amp;rsquo;s a small application which displays nicely formatted, up to the
 second SNMP data from pretty much any device attached to your network.
