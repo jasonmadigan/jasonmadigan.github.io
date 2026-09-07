@@ -1,0 +1,35 @@
+{{ define "main" }}
+  {{ $posts := where .RegularPagesRecursive "Section" "posts" }}
+  {{ $archive := and .IsSection (eq .Section "posts") }}
+  <header class="page-heading">
+    <h1>{{ if $archive }}The archive.{{ else }}{{ .Title }}{{ end }}</h1>
+    <p>{{ len $posts }} {{ if eq (len $posts) 1 }}note{{ else }}notes{{ end }}{{ if not $archive }} · <a href="{{ "posts/" | relURL }}">All writing</a>{{ else }} on software, small experiments, and other things.{{ end }}</p>
+    {{ with .Content }}<div class="prose">{{ . }}</div>{{ end }}
+  </header>
+  {{ if $archive }}
+    {{ $topics := slice }}
+    {{ range $posts }}
+      {{ range .GetTerms "categories" }}{{ $topics = $topics | append .LinkTitle }}{{ end }}
+      {{ range .GetTerms "tags" }}{{ $topics = $topics | append .LinkTitle }}{{ end }}
+    {{ end }}
+    <form class="archive-tools" role="search" data-archive-form hidden>
+      <div class="search-field">
+        <label for="search">Search the writing</label>
+        <input type="search" name="q" id="search" placeholder="A title, a topic, a half-remembered phrase…" autocomplete="off" aria-controls="archive-results">
+      </div>
+      <div class="topic-field">
+        <label for="topic">Topic</label>
+        <select name="topic" id="topic" aria-controls="archive-results">
+          <option value="">All topics</option>
+          {{ range sort (uniq $topics) }}<option value="{{ . }}">{{ . }}</option>{{ end }}
+        </select>
+      </div>
+      <button type="reset" class="clear-search">Clear</button>
+    </form>
+    <p class="result-count" data-result-count role="status" hidden></p>
+  {{ end }}
+  <div id="archive-results">
+    {{ partial "post-list.html" (dict "pages" $posts "searchable" $archive) }}
+    {{ if $archive }}<p class="empty-state" data-empty-state hidden>No notes match that search. Try another word or topic.</p>{{ end }}
+  </div>
+{{ end }}

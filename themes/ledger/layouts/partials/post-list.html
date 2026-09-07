@@ -1,0 +1,19 @@
+{{- $searchable := .searchable | default false -}}
+<div class="year-list"{{ if $searchable }} data-post-list{{ end }}>
+  {{ range .pages.GroupByDate "2006" }}
+  <section class="year-group" aria-labelledby="year-{{ .Key }}">
+    <h2 id="year-{{ .Key }}" class="year">{{ .Key }}</h2>
+    <ul class="post-list">
+      {{ range .Pages }}
+        {{ $topics := slice }}
+        {{ range .GetTerms "categories" }}{{ $topics = $topics | append .LinkTitle }}{{ end }}
+        {{ range .GetTerms "tags" }}{{ $topics = $topics | append .LinkTitle }}{{ end }}
+      <li class="post-item"{{ if $searchable }} data-search="{{ printf "%s %s %s %s" .Title .Plain (.Date.Format "2006-01-02") (delimit $topics " ") | lower }}" data-topics="{{ $topics | jsonify }}"{{ end }}>
+        <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+        <time datetime="{{ .Date.Format "2006-01-02" }}" aria-label="{{ .Date.Format "2 January 2006" }}">{{ .Date.Format "02 Jan" }}</time>
+      </li>
+      {{ end }}
+    </ul>
+  </section>
+  {{ end }}
+</div>
