@@ -1,0 +1,24 @@
+{{ define "main" }}
+  {{ $post := eq .Section "posts" }}
+  <article>
+    <header class="article-heading">
+      {{ if $post }}<a class="back-link" href="{{ "posts/" | relURL }}">← All writing</a>{{ end }}
+      <h1>{{ .Title }}</h1>
+      {{ if $post }}
+      <div class="article-meta">
+        <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2 January 2006" }}</time>
+        <span>{{ .ReadingTime }} min read</span>
+        {{ range .GetTerms "categories" }}<a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>{{ end }}
+        {{ range .GetTerms "tags" }}<a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>{{ end }}
+      </div>
+      {{ end }}
+    </header>
+    <div class="prose">{{ .Content }}</div>
+    {{ if $post }}
+    <nav class="article-navigation" aria-label="More writing">
+      {{ with .PrevInSection }}<a href="{{ .RelPermalink }}"><span>Older note</span>{{ .Title }}</a>{{ end }}
+      {{ with .NextInSection }}<a href="{{ .RelPermalink }}"><span>Newer note</span>{{ .Title }}</a>{{ end }}
+    </nav>
+    {{ end }}
+  </article>
+{{ end }}

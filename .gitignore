@@ -1,1 +1,4 @@
 public/
+.tools/
+.playwright-mcp/
+resources/_gen/

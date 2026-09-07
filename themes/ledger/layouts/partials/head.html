@@ -1,0 +1,34 @@
+{{- $title := site.Title -}}
+{{- if not .IsHome -}}{{- $title = printf "%s — %s" .Title site.Title -}}{{- end -}}
+{{- $description := .Description | default site.Params.description -}}
+{{- if and .IsPage (not .Description) -}}
+  {{- $description = .Summary | plainify | htmlUnescape | truncate 160 -}}
+{{- end -}}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ $title }}</title>
+<meta name="description" content="{{ $description }}">
+<meta name="author" content="{{ site.Params.author }}">
+<meta name="theme-color" content="#ffffff">
+{{ if eq .Kind "404" }}<meta name="robots" content="noindex">{{ else }}<link rel="canonical" href="{{ .Permalink }}">{{ end }}
+<meta property="og:title" content="{{ $title }}">
+<meta property="og:description" content="{{ $description }}">
+<meta property="og:site_name" content="{{ site.Title }}">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:type" content="{{ if and .IsPage (eq .Section "posts") }}article{{ else }}website{{ end }}">
+{{ if and .IsPage (eq .Section "posts") }}
+<meta property="article:published_time" content="{{ .PublishDate.Format "2006-01-02T15:04:05Z07:00" }}">
+{{ end }}
+<meta name="twitter:card" content="summary">
+{{ with site.Params.avatar }}<link rel="icon" href="{{ . | relURL }}" type="image/jpeg">{{ end }}
+{{ $css := resources.Get "css/ledger.css" | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+{{ with .OutputFormats.Get "RSS" }}
+<link rel="alternate" type="application/rss+xml" title="{{ $title }}" href="{{ .Permalink }}">
+{{ else }}
+<link rel="alternate" type="application/rss+xml" title="{{ site.Title }}" href="{{ "index.xml" | absURL }}">
+{{ end }}
+{{ if and .IsSection (eq .Section "posts") }}
+  {{ $js := resources.Get "js/archive.js" | minify | fingerprint }}
+  <script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" defer></script>
+{{ end }}

@@ -1,17 +1,18 @@
-FROM nginx:alpine as build
+FROM nginx:alpine AS build
 
-RUN apk add --update \
-    wget
+RUN apk add --no-cache \
+    ca-certificates wget
     
-ARG HUGO_VERSION="0.74.3"
-RUN wget --quiet "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_Linux-64bit.tar.gz" && \
-    tar xzf hugo_${HUGO_VERSION}_Linux-64bit.tar.gz && \
-    rm -r hugo_${HUGO_VERSION}_Linux-64bit.tar.gz && \
+ARG HUGO_VERSION="0.140.2"
+ARG TARGETARCH
+RUN wget --quiet "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_linux-${TARGETARCH}.tar.gz" && \
+    tar xzf hugo_${HUGO_VERSION}_linux-${TARGETARCH}.tar.gz && \
+    rm hugo_${HUGO_VERSION}_linux-${TARGETARCH}.tar.gz && \
     mv hugo /usr/bin
 
 COPY ./ /site
 WORKDIR /site
-RUN hugo
+RUN hugo --minify
 
 # Copy static files to Nginx
 FROM nginx:alpine

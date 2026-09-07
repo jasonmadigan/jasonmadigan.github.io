@@ -1,0 +1,12 @@
+{{ define "main" }}
+  <header class="page-heading">
+    <h1>{{ .Title }}</h1>
+    <p>Browse the writing by {{ if eq .Data.Plural "categories" }}category{{ else }}tag{{ end }}.</p>
+  </header>
+  <ul class="term-list">
+    {{ range .Data.Terms.Alphabetical }}
+    <li><a href="{{ .Page.RelPermalink }}">{{ .Page.LinkTitle }}</a><span>{{ .Count }} {{ if eq .Count 1 }}note{{ else }}notes{{ end }}</span></li>
+    {{ end }}
+  </ul>
+  <p class="archive-link"><a href="{{ "posts/" | relURL }}">All writing <span aria-hidden="true">→</span></a></p>
+{{ end }}

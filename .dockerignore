@@ -1,0 +1,6 @@
+.git
+.tools
+.playwright-mcp
+public
+resources/_gen
+static/design-prototype.html

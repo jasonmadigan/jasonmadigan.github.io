@@ -1,21 +1,54 @@
-baseURL = "/"
+baseURL = "https://jasonmadigan.com/"
 languageCode = "en-us"
 title = "Jason Madigan"
-theme = "m10c"
+theme = "ledger"
 
 [params]
-description = "He's just zis guy, ya know?"
+description = "Notes on software, side projects, and other curiosities by Jason Madigan."
+tagline = "He's just zis guy, ya know?"
 author = "Jason Madigan"
 avatar = "0.jpg"
+email = "himself@jasonmadigan.com"
+since = 2007
+homeTitle = "Software, and other things."
+homeIntro = "I'm Jason. I work at Red Hat. Every so often, I write something down. Here's the collection, going back a while."
 
 [[params.social]]
   name = "github"
   url = "https://github.com/jasonmadigan"
 
 [[menu.main]]
+  identifier = "writing"
+  name = "Writing"
+  url = "/"
+  weight = 10
+
+[[menu.main]]
+  identifier = "archive"
+  name = "Archive"
+  url = "/posts/"
+  weight = 20
+
+[[menu.main]]
+  identifier = "projects"
+  name = "Projects"
+  url = "/projects/"
+  weight = 30
+
+[[menu.main]]
   identifier = "about"
   name = "About"
   url = "/about/"
+  weight = 40
 
 [markup.goldmark.renderer]
   unsafe = true
+
+[markup.highlight]
+  noClasses = false
+
+# Keep the design study available to the separate preview server, out of builds.
+[[module.mounts]]
+  source = "static"
+  target = "static"
+  excludeFiles = ["design-prototype.html"]

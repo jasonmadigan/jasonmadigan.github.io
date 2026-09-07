@@ -1,0 +1,12 @@
+<header class="site-header">
+  <a class="identity" href="{{ site.Home.RelPermalink }}">
+    {{ with site.Params.avatar }}<img class="avatar" src="{{ . | relURL }}" width="36" height="36" alt="">{{ end }}
+    <span>{{ site.Title }}</span>
+  </a>
+  <nav class="site-nav" aria-label="Main navigation">
+    {{ range site.Menus.main }}
+      {{ $active := eq $.RelPermalink (.URL | relURL) }}
+      <a href="{{ .URL | relURL }}"{{ if $active }} aria-current="page"{{ end }}>{{ .Name }}</a>
+    {{ end }}
+  </nav>
+</header>

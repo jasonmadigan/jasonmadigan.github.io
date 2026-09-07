@@ -1,0 +1,30 @@
+{{ define "main" }}
+  <header class="page-heading projects-heading">
+    <h1>{{ .Params.heading | default .Title }}</h1>
+    {{ .Content }}
+  </header>
+  <div class="project-grid">
+    {{ range .Params.projects }}
+      {{ $primary := index .links 0 }}
+      <article class="project-card{{ if .featured }} project-featured{{ end }}">
+        {{ if .image }}
+        <a class="project-image" href="{{ $primary.url | relURL }}" aria-label="{{ $primary.label }} — {{ .name }}">
+          <img src="{{ .image | relURL }}" alt="{{ .image_alt }}" width="{{ .image_width }}" height="{{ .image_height }}" loading="lazy" decoding="async">
+        </a>
+        {{ else }}
+        {{ with .symbol }}<div class="project-symbol" aria-hidden="true">{{ . }}</div>{{ end }}
+        {{ end }}
+        <div class="project-copy">
+          <p class="project-category">{{ .category }}</p>
+          <h2><a href="{{ $primary.url | relURL }}">{{ .name }}</a></h2>
+          <p class="project-description">{{ .description }}</p>
+          <ul class="project-links" aria-label="{{ .name }} links">
+            {{ range .links }}
+            <li><a href="{{ .url | relURL }}">{{ .label }} <span aria-hidden="true">↗</span></a></li>
+            {{ end }}
+          </ul>
+        </div>
+      </article>
+    {{ end }}
+  </div>
+{{ end }}

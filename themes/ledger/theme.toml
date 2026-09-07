@@ -1,0 +1,6 @@
+name = "Ledger"
+description = "A quiet personal blog, with writing grouped by year."
+min_version = "0.140.2"
+
+[author]
+  name = "Jason Madigan"

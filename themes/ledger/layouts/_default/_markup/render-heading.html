@@ -1,0 +1,6 @@
+{{- /* The page title owns h1, including when an older post uses # headings. */ -}}
+{{- $level := .Level -}}
+{{- if eq $level 1 -}}{{- $level = 2 -}}{{- end -}}
+{{- printf "<h%d id=%q>" $level .Anchor | safeHTML -}}
+{{- .Text | safeHTML -}}
+{{- printf "</h%d>" $level | safeHTML -}}
