@@ -75,6 +75,13 @@ main:focus { outline: none; }
 .project-featured .project-copy { grid-column: 1; grid-row: 1; }
 .project-featured .project-image { grid-column: 2; grid-row: 1; margin: 0; }
 .project-featured .project-links { margin-top: 0; }
+/* balance is the fallback where text-wrap: pretty is unsupported (firefox) */
+.work-heading p { text-wrap: balance; text-wrap: pretty; }
+.work-list { display: grid; grid-template-columns: fit-content(15em) minmax(0, 1fr); column-gap: 24px; margin: 0; padding: 0; list-style: none; font-size: 15px; }
+.work-list li { grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; align-items: baseline; row-gap: 5px; padding: 20px 0; border-top: 1px solid var(--line); }
+.work-list a { justify-self: start; line-height: 1.6; letter-spacing: -.15px; }
+.work-list a span { margin-left: 5px; color: var(--accent); }
+.work-list p { font-size: 14px; line-height: 1.85; color: var(--muted); text-wrap: balance; text-wrap: pretty; }
 .reading-page .site { max-width: 750px; }
 .article-heading { padding: 48px 0 30px; }
 .back-link { font-size: 12px; color: var(--accent); display: inline-block; margin-bottom: 25px; }
@@ -133,6 +140,7 @@ main:focus { outline: none; }
   .project-card { padding: 23px; }
   .project-featured { display: flex; gap: 0; }
   .project-featured .project-image { margin-bottom: 23px; }
+  .work-list { grid-template-columns: minmax(0, 1fr); }
   .article-navigation { grid-template-columns: 1fr; gap: 22px; }
 }
 @media print {
@@ -140,4 +148,6 @@ main:focus { outline: none; }
   .site-nav, .site-footer, .back-link, .article-navigation, .archive-tools, .skip-link { display: none; }
   .prose pre { white-space: pre-wrap; overflow-wrap: anywhere; }
   a { text-decoration: underline; }
+  .work-heading { break-after: avoid; }
+  .work-list li { break-inside: avoid; }
 }

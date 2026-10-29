@@ -27,4 +27,21 @@
       </article>
     {{ end }}
   </div>
+  {{ with .Params.work }}
+  <section aria-labelledby="work-heading">
+    <header class="page-heading work-heading">
+      <h2 class="eyebrow" id="work-heading">{{ .heading }}</h2>
+      {{ with .intro }}<p>{{ . | markdownify }}</p>{{ end }}
+    </header>
+    {{/* role: safari can drop list semantics under list-style: none */}}
+    <ul class="work-list" role="list">
+      {{ range .items }}
+      <li>
+        <a href="{{ .url | relURL }}">{{ .name }} <span aria-hidden="true">↗</span></a>
+        <p>{{ .description | markdownify }}</p>
+      </li>
+      {{ end }}
+    </ul>
+  </section>
+  {{ end }}
 {{ end }}
