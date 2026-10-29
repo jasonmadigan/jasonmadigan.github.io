@@ -48,9 +48,12 @@ archive search live under `themes/ledger/layouts` and `themes/ledger/assets`.
 
 The Projects page is maintained in `content/projects.md`. Its front matter holds
 the ordered project cards, descriptions, images, and links; `featured: true`
-makes a card span both columns. Cards stack on smaller screens.
+makes a card span both columns. Cards stack on smaller screens. Card images are
+shown small and cropped to 16:10, so use a zoomed-in 16:10 crop of a screenshot
+rather than the whole window. The `work` block lists work projects as plain
+links in an "At work" section below the cards.
 
-The Tracefinity screenshot comes from
+The Tracefinity image is cropped from
 [`tracefinity/tracefinity`](https://github.com/tracefinity/tracefinity/blob/main/docs/screenshots/bin-editor.png).
 Its MIT license is kept alongside the image in
 `static/images/projects/tracefinity-LICENSE.txt`.
