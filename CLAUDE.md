@@ -6,7 +6,7 @@ Hugo source for jasonmadigan.com, using the local Ledger theme in `themes/ledger
 
 ## Commands
 
-Hugo 0.140.2, matching CI. When `hugo` is not on `PATH`, use `./.tools/hugo` (gitignored, a per-machine binary).
+Hugo 0.169.0, matching CI; a Homebrew `hugo` of that version works as is. When `hugo` is not on `PATH`, use `./.tools/hugo` (gitignored, a per-machine binary), which must be the same version: the theme's `min_version` refuses older ones.
 
 ```sh
 hugo server --bind 127.0.0.1 --port 1313 --disableFastRender   # preview on http://localhost:1313/
