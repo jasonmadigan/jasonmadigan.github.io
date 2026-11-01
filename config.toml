@@ -1,5 +1,5 @@
 baseURL = "https://jasonmadigan.com/"
-languageCode = "en-us"
+locale = "en-us"
 title = "Jason Madigan"
 theme = "ledger"
 
@@ -51,4 +51,4 @@ homeIntro = "I'm Jason. I work at Red Hat. Every so often, I write something dow
 [[module.mounts]]
   source = "static"
   target = "static"
-  excludeFiles = ["design-prototype.html"]
+  files = ['! design-prototype.html']

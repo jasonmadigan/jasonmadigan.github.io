@@ -7,7 +7,7 @@ works entirely in the browser; without JavaScript, all posts remain accessible.
 
 ## Local preview
 
-Use Hugo **0.140.2**, the version pinned in the deployment workflow and Dockerfile.
+Use Hugo **0.169.0**, the version pinned in the deployment workflow and Dockerfile.
 The Ledger theme needs no Node packages or Sass compiler.
 
 ```sh

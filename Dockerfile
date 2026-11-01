@@ -3,7 +3,7 @@ FROM nginx:alpine AS build
 RUN apk add --no-cache \
     ca-certificates wget
     
-ARG HUGO_VERSION="0.140.2"
+ARG HUGO_VERSION="0.169.0"
 ARG TARGETARCH
 RUN wget --quiet "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_linux-${TARGETARCH}.tar.gz" && \
     tar xzf hugo_${HUGO_VERSION}_linux-${TARGETARCH}.tar.gz && \
